@@ -1,0 +1,66 @@
+.page-form-box{
+    width: 380px;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.page-form-box h1{
+    margin: 0px 0px 25px;
+    font-size: 30px;
+    font-weight: 400;
+}
+.page-form-fields{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+.page-form-fields label{
+    font-weight: bold;
+    font-size: 14px;
+}
+.page-form-input{
+    height: 31px;
+    border-radius: 3px;
+    border: none;
+    border: 1px solid #a5a3a3;
+    margin-top: 5px;
+    padding: 3px 7px;
+    box-sizing: border-box;
+    background-color: inherit;
+}
+.page-form-input:focus{
+    background-color:  #faf2f2;
+    outline: 0;
+    border: 1px solid #424242;
+}
+.page-task-complete-btn-box{
+    margin-top: 30px;
+}
+.page-task-complete-btn{
+    width: 100%;
+    height: 30px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 3px -3px rgba(0,0,0,0.3);
+    font-family: inherit;
+    font-size: 14px;
+}
+.page-task-complete-btn:hover{
+    background-color: #ff7b00;
+}
+.no-account-box{
+    text-align: center;
+    font-size: 14px;
+}
+.no-account-box p{
+    margin: 30px 0px 10px;
+}
+.sign-up-link{
+    color: #0066c0;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.sign-up-link:hover{
+    text-decoration: underline;
+}

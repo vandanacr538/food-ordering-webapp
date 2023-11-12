@@ -1,0 +1,28 @@
+.customer-login-main-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+.customer-login-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.customer-form-box{
+    border: 1px solid #ff9100;
+}
+.customer-login-btn{
+    background-color: #ff9100;
+}
+.customer-login-image-box{
+    margin: 30px 0px;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url(../../Assets/custologinbackgd.jpg);
+}
+.customer-login-page-img{
+    width: 100%;
+}

@@ -23,6 +23,9 @@
     font-family: inherit;
     cursor: pointer;
 }
+.landing-page-intro-btn:hover{
+    background-color: #ff7b00;
+}
 .landing-img{
     width: 500px;
     height: 400px;
