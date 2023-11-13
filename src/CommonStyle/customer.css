@@ -1,0 +1,30 @@
+.customer-login-signup-main-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+.customer-login-signup-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.customer-login-signup-form-box{
+    border: 1px solid #ff9100;
+}
+.customer-login-signup-btn{
+    background-color: #ff9100;
+}
+.customer-login-signup-btn:hover{
+    background-color: #ff7b00;
+}
+.customer-login-signup-image-box{
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url(../Assets/custobackgd.jpg);
+}
+.customer-login-signup-page-img{
+    width: 100%;
+}

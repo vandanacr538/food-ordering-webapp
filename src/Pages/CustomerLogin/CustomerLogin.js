@@ -1,32 +1,38 @@
 import React from 'react'
-import "../customerandrestaurant.css";
-import "./customerlogin.css";
-import customerloginpage from "../../Assets/customerloginpage.png";
+import "../../CommonStyle/customerandrestaurant.css";
+import "../../CommonStyle/customer.css";
+import customerpage from "../../Assets/customerpage.png";
+import { useNavigate } from 'react-router-dom';
 
 export default function CustomerLogin() {
+  const navigate = useNavigate();
+  const gotoSignUpPage=()=>{
+    navigate("/customer/signup");
+  }
+
   return (
-    <div className='customer-login-main-container'>
-      <div className='customer-login-container'>
-        <div className='page-form-box customer-form-box'>
+    <div className='customer-login-signup-main-container'>
+      <div className='customer-login-signup-container'>
+        <div className='login-signup-form-box customer-login-signup-form-box'>
           <h1>Customer Login</h1>
-          <div className='page-form-fields'>
+          <div className='login-signup-form-fields'>
             <label htmlFor="customer-email">Email</label>
-            <input type='email' id='customer-email' className='page-form-input' name="customer-email" ></input>
+            <input type='email' id='customer-email' className='login-signup-form-input' name="customer-email" ></input>
           </div>
-          <div className='page-form-fields'>
+          <div className='login-signup-form-fields'>
             <label htmlFor="customer-password">Password</label>
-            <input type='text' id='customer-password' className='page-form-input' name="customer-password" ></input>
+            <input type='password' id='customer-password' className='login-signup-form-input' name="customer-password" ></input>
           </div>
-          <div className='page-task-complete-btn-box'>
-          <button className='page-task-complete-btn customer-login-btn' >Sign in</button>
+          <div className='login-signup-form-complete-btn-box'>
+            <button className='login-signup-form-complete-btn customer-login-signup-btn'>Sign in</button>
           </div>
-          <div className='no-account-box'>
-            <p>Don't have an account?<span className='sign-up-link'>Sign Up</span></p>
+          <div className='login-signup-link-box'>
+            <p>Don't have an account?<span className='login-sign-up-link' onClick={gotoSignUpPage}>Sign Up</span></p>
           </div>
         </div>
       </div>
-      <div className='customer-login-image-box'>
-        <img src={customerloginpage} alt="customerloginpage" className='customer-login-page-img'></img>
+      <div className='customer-login-signup-image-box'>
+        <img src={customerpage} alt="customerloginpage" className='customer-login-signup-page-img'></img>
       </div>
     </div>
   )

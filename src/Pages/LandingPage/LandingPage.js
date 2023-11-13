@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function LandingPage() {
   const navigate = useNavigate();
   const loginAsCustomer=()=>{
-    navigate("/customer_login");
+    navigate("/customer/login");
   } 
 
   return (
