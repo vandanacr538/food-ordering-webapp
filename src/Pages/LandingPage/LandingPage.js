@@ -9,6 +9,9 @@ export default function LandingPage() {
   const loginAsCustomer=()=>{
     navigate("/customer/login");
   } 
+  const loginAsRestaurant=()=>{
+    navigate("/restaurant/login");
+  }
 
   return (
     <div className='landing-page-main-container'>
@@ -16,7 +19,7 @@ export default function LandingPage() {
             <div className='landing-page-intro-box'>
                 <h1>Food Ordering Web App</h1>
                 <button className='landing-page-intro-btn' onClick={loginAsCustomer}>Customer</button>
-                <button className='landing-page-intro-btn'>Restaurant</button>
+                <button className='landing-page-intro-btn' onClick={loginAsRestaurant}>Restaurant</button>
             </div>
             <div className='landing-page-intro-box'>
                 <img src={landingimg} alt="landing-img" className='landing-img'></img>
