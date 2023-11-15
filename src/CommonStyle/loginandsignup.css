@@ -91,3 +91,21 @@
 .customer-login-signup-btn:hover, .restaurant-login-signup-btn:hover{
     background-color: #ff7b00;
 }
+.display-input-data-error{
+    margin: 5px 0px 0px;
+    font-size: 13px;
+    color: #ca0e0e;
+}
+.hide-data{
+    display: none;
+}
+.display-login-signup-auth-error{
+    margin: 15px auto 0px;
+    font-size: 13px;
+    color: #ca0e0e;
+}
+.password-rule{
+    margin: 5px 0px 0px;
+    font-size: 13px;
+    color: #000;
+}
