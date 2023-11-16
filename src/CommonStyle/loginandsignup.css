@@ -44,6 +44,9 @@
     outline: 0;
     border: 1px solid #424242;
 }
+.address-input{
+    height: 40px;
+}
 .login-signup-form-complete-btn-box{
     margin-top: 30px;
 }
