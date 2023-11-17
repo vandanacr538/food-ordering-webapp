@@ -6,6 +6,7 @@ import axios from "axios";
 
 export default function CustomerSignUp() {
   const navigate = useNavigate();
+  const mobileRegex=/^\d/;
   const [customerSignUpData, setCustomerSignUpData] = useState({
     customer_name: "",
     customer_email: "",
@@ -44,11 +45,22 @@ export default function CustomerSignUp() {
     else{
       setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_emailError:""}));
     }
+    setCustomerSignUpAuthError("")
   }
   const handleChangeCustomerMobile=(e)=>{
-    setCustomerSignUpData((previousValue)=>({...previousValue, [e.target.name]:Number(e.target.value)}));
+    setCustomerSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
     if(e.target.value===""){
       setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_mobileError:"Enter your mobile number"}));
+    }
+    else if(mobileRegex.test(e.target.value) === false){
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_mobileError:"Mobile Number must have only digits"}));
+    }
+    else if(e.target.value.length>10){
+      setCustomerSignUpFieldsError((previousError) => ({
+        ...previousError,
+        customer_mobileError: "Mobile Number cannot have more than 10 digits",
+      }));
+      custSignUpValidDataObj["isMobileValid"] = false;
     }
     else{
       setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_mobileError:""}));
@@ -64,6 +76,9 @@ export default function CustomerSignUp() {
       setCustomerPasswordRule(true);
       setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_passwordError:""}));
     }
+  }
+  const handleBlurHideCustomerPassword=()=>{
+    setCustomerPasswordRule(false);
   }
 
   const validateCustomerName = () => {
@@ -118,35 +133,33 @@ export default function CustomerSignUp() {
       custSignUpValidDataObj["isMobileValid"] = false;
     } 
     else {
-      const mobileRegex = /^\d/;
-      const isMobile = customerSignUpData.customer_mobilenum.toString();
-      if (mobileRegex.test(Number(isMobile)) === false) {
+      if (mobileRegex.test(customerSignUpData.customer_mobilenum) === false) {
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
-          customer_mobileError: "Mobile Number is not valid",
+          customer_mobileError: "Mobile Number must have only digits",
         }));
         custSignUpValidDataObj["isMobileValid"] = false;
-      } 
-      else if (isMobile.length < 10) {
+      }
+      else if(customerSignUpData.customer_mobilenum.toString().length<10){
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_mobileError: "Mobile Number must have 10 digits",
         }));
         custSignUpValidDataObj["isMobileValid"] = false;
       } 
-      else if (isMobile.length > 10) {
+      else if(customerSignUpData.customer_mobilenum.toString().length>10){
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_mobileError: "Mobile Number cannot have more than 10 digits",
         }));
         custSignUpValidDataObj["isMobileValid"] = false;
-      } 
+      }
       else {
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_mobileError: "",
         }));
-        custSignUpValidDataObj["isMobileValid"] = true;
+        custSignUpValidDataObj["isMobileValid"] = true;   
       }
     }
   };
@@ -298,6 +311,7 @@ export default function CustomerSignUp() {
               className="login-signup-form-input"
               name="customer_password"
               onChange={handleChangeCustomerPassword}
+              onBlur={handleBlurHideCustomerPassword}
             ></input>
             <p
               className={
