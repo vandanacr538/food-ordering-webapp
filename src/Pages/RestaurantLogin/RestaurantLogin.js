@@ -10,19 +10,34 @@ export default function RestaurantLogin() {
     restaurant_email: "",
     restaurant_password: "",
   });
-  const [restLoginFieldsError, setRestLoginFieldsError] = useState({});
+  const [restLoginFieldsError, setRestLoginFieldsError] = useState({
+    restaurant_emailError:"",
+    restaurant_passwordError:""
+  });
   const [restLoginAuthError, setRestLoginAuthError] = useState("");
   const restLoginValidDataObj = {
     isRestEmailValid: false,
     isRestPasswordValid: false,
   };
 
-  const handleChangeRestLoginData = (e) => {
-    setRestaurantLoginData((previousValue) => ({
-      ...previousValue,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const handleChangeRestEmail = (e)=>{
+    setRestaurantLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
+    if(e.target.value===""){
+      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_emailError:"Enter restaurant email"}));
+    }
+    else{
+      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_emailError:""}));
+    }
+  }
+  const handleChangeRestPassword = (e)=>{
+    setRestaurantLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
+    if(e.target.value===""){
+      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_passwordError:"Enter restaurant password"}));
+    }
+    else{
+      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_passwordError:""}));
+    }
+  }
   const validateRestEmail = () => {
     const emailRegx =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -110,7 +125,7 @@ export default function RestaurantLogin() {
               id="restaurant-email"
               className="login-signup-form-input"
               name="restaurant_email"
-              onChange={handleChangeRestLoginData}
+              onChange={handleChangeRestEmail}
             ></input>
             <p
               className={
@@ -129,7 +144,7 @@ export default function RestaurantLogin() {
               id="restaurant-password"
               className="login-signup-form-input"
               name="restaurant_password"
-              onChange={handleChangeRestLoginData}
+              onChange={handleChangeRestPassword}
             ></input>
             <p
               className={

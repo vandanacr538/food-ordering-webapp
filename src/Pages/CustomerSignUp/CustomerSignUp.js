@@ -13,9 +13,12 @@ export default function CustomerSignUp() {
     customer_password: "",
   });
   const [customerPasswordRule, setCustomerPasswordRule] = useState(false);
-  const [customerSignUpFieldsError, setCustomerSignUpFieldsError] = useState(
-    {}
-  );
+  const [customerSignUpFieldsError, setCustomerSignUpFieldsError] = useState({
+    customer_nameError:"",
+    customer_emailError:"",
+    customer_mobileError:"",
+    customer_passwordError:"",
+  });
   const [customerSignUpAuthError, setCustomerSignUpAuthError] = useState("");
   const custSignUpValidDataObj = {
     isNameValid: false,
@@ -24,15 +27,45 @@ export default function CustomerSignUp() {
     isPasswordValid: false,
   };
 
-  const handleChangeCustomerSignUpData = (e) => {
-    setCustomerSignUpData((previousValue) => ({
-      ...previousValue,
-      [e.target.name]: e.target.value.trim(),
-    }));
-  };
-  const handleKeyUpCustomerPasswordRule = () => {
-    setCustomerPasswordRule(true);
-  };
+  const handleChangeCustomerName=(e)=>{
+    setCustomerSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
+    if(e.target.value.trim()===""){
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_nameError:"Enter your name"}));
+    }
+    else{
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_nameError:""}));
+    }
+  }
+  const handleChangeCustomerEmail=(e)=>{
+    setCustomerSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
+    if(e.target.value===""){
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_emailError:"Enter your email"}));
+    }
+    else{
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_emailError:""}));
+    }
+  }
+  const handleChangeCustomerMobile=(e)=>{
+    setCustomerSignUpData((previousValue)=>({...previousValue, [e.target.name]:Number(e.target.value)}));
+    if(e.target.value===""){
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_mobileError:"Enter your mobile number"}));
+    }
+    else{
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_mobileError:""}));
+    }
+  }
+  const handleChangeCustomerPassword=(e)=>{
+    setCustomerSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
+    if(e.target.value===""){
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_passwordError:"Enter your password"}));
+      setCustomerPasswordRule(false);
+    }
+    else{
+      setCustomerPasswordRule(true);
+      setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_passwordError:""}));
+    }
+  }
+
   const validateCustomerName = () => {
     if (customerSignUpData.customer_name === "") {
       setCustomerSignUpFieldsError((previousError) => ({
@@ -40,7 +73,8 @@ export default function CustomerSignUp() {
         customer_nameError: "Enter your name",
       }));
       custSignUpValidDataObj["isNameValid"] = false;
-    } else {
+    } 
+    else {
       setCustomerSignUpFieldsError((previousError) => ({
         ...previousError,
         customer_nameError: "",
@@ -48,6 +82,7 @@ export default function CustomerSignUp() {
       custSignUpValidDataObj["isNameValid"] = true;
     }
   };
+
   const validateCustomerEmail = () => {
     const emailRegx =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -57,13 +92,15 @@ export default function CustomerSignUp() {
         customer_emailError: "Enter your email",
       }));
       custSignUpValidDataObj["isEmailValid"] = false;
-    } else if (emailRegx.test(customerSignUpData.customer_email) === false) {
+    } 
+    else if (emailRegx.test(customerSignUpData.customer_email) === false) {
       setCustomerSignUpFieldsError((previousError) => ({
         ...previousError,
         customer_emailError: "Invalid email address!, please check",
       }));
       custSignUpValidDataObj["isEmailValid"] = false;
-    } else {
+    } 
+    else {
       setCustomerSignUpFieldsError((previousError) => ({
         ...previousError,
         customer_emailError: "",
@@ -71,6 +108,7 @@ export default function CustomerSignUp() {
       custSignUpValidDataObj["isEmailValid"] = true;
     }
   };
+
   const validateCustomerMobile = () => {
     if (customerSignUpData.customer_mobilenum === "") {
       setCustomerSignUpFieldsError((previousError) => ({
@@ -78,7 +116,8 @@ export default function CustomerSignUp() {
         customer_mobileError: "Enter your mobile number",
       }));
       custSignUpValidDataObj["isMobileValid"] = false;
-    } else {
+    } 
+    else {
       const mobileRegex = /^\d/;
       const isMobile = customerSignUpData.customer_mobilenum.toString();
       if (mobileRegex.test(Number(isMobile)) === false) {
@@ -87,19 +126,22 @@ export default function CustomerSignUp() {
           customer_mobileError: "Mobile Number is not valid",
         }));
         custSignUpValidDataObj["isMobileValid"] = false;
-      } else if (isMobile.length < 10) {
+      } 
+      else if (isMobile.length < 10) {
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_mobileError: "Mobile Number must have 10 digits",
         }));
         custSignUpValidDataObj["isMobileValid"] = false;
-      } else if (isMobile.length > 10) {
+      } 
+      else if (isMobile.length > 10) {
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_mobileError: "Mobile Number cannot have more than 10 digits",
         }));
         custSignUpValidDataObj["isMobileValid"] = false;
-      } else {
+      } 
+      else {
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_mobileError: "",
@@ -108,14 +150,17 @@ export default function CustomerSignUp() {
       }
     }
   };
+
   const validateCustomerPassword = () => {
+    setCustomerPasswordRule(false);
     if (customerSignUpData.customer_password === "") {
       setCustomerSignUpFieldsError((previousError) => ({
         ...previousError,
         customer_passwordError: "Enter your password",
       }));
       custSignUpValidDataObj["isPasswordValid"] = false;
-    } else {
+    } 
+    else {
       const passwordValidation =
         /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/;
       if (customerSignUpData.customer_password.length < 8) {
@@ -124,7 +169,8 @@ export default function CustomerSignUp() {
           customer_passwordError: "Password must have 8 characters",
         }));
         custSignUpValidDataObj["isPasswordValid"] = false;
-      } else if (
+      } 
+      else if (
         passwordValidation.test(customerSignUpData.customer_password) === false
       ) {
         setCustomerSignUpFieldsError((previousError) => ({
@@ -132,13 +178,16 @@ export default function CustomerSignUp() {
           customer_passwordError: "Password is not valid",
         }));
         custSignUpValidDataObj["isPasswordValid"] = false;
-      } else if (customerSignUpData.customer_password.length > 16) {
+        setCustomerPasswordRule(true);
+      } 
+      else if (customerSignUpData.customer_password.length > 16) {
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_passwordError: "Password can have maximum 16 characters",
         }));
         custSignUpValidDataObj["isPasswordValid"] = false;
-      } else {
+      } 
+      else {
         setCustomerSignUpFieldsError((previousError) => ({
           ...previousError,
           customer_passwordError: "",
@@ -146,8 +195,8 @@ export default function CustomerSignUp() {
         custSignUpValidDataObj["isPasswordValid"] = true;
       }
     }
-    setCustomerPasswordRule(false);
   };
+
   const handleClickCustomerSignUp = async () => {
     setCustomerSignUpAuthError("");
     validateCustomerName();
@@ -191,11 +240,11 @@ export default function CustomerSignUp() {
               id="customer-name"
               className="login-signup-form-input"
               name="customer_name"
-              onChange={handleChangeCustomerSignUpData}
+              onChange={handleChangeCustomerName}
             ></input>
             <p
               className={
-                customerSignUpFieldsError.customer_nameError === ""
+                customerSignUpFieldsError.customer_nameError===""
                   ? "hide-data"
                   : "display-input-data-error"
               }
@@ -210,11 +259,11 @@ export default function CustomerSignUp() {
               id="customer-email"
               className="login-signup-form-input"
               name="customer_email"
-              onChange={handleChangeCustomerSignUpData}
+              onChange={handleChangeCustomerEmail}
             ></input>
             <p
               className={
-                customerSignUpFieldsError.customer_emailError === ""
+                customerSignUpFieldsError.customer_emailError===""
                   ? "hide-data"
                   : "display-input-data-error"
               }
@@ -229,7 +278,7 @@ export default function CustomerSignUp() {
               id="customer-mobile"
               className="login-signup-form-input"
               name="customer_mobilenum"
-              onChange={handleChangeCustomerSignUpData}
+              onChange={handleChangeCustomerMobile}
             ></input>
             <p
               className={
@@ -248,13 +297,8 @@ export default function CustomerSignUp() {
               id="customer-password"
               className="login-signup-form-input"
               name="customer_password"
-              onChange={handleChangeCustomerSignUpData}
-              onKeyUp={handleKeyUpCustomerPasswordRule}
+              onChange={handleChangeCustomerPassword}
             ></input>
-            <p className={customerPasswordRule ? "password-rule" : "hide-data"}>
-              Password must have 8 characters including 1 Uppercase, 1
-              lowercase, 1 number & 1 special character
-            </p>
             <p
               className={
                 customerSignUpFieldsError.customer_passwordError === ""
@@ -263,6 +307,10 @@ export default function CustomerSignUp() {
               }
             >
               {customerSignUpFieldsError.customer_passwordError}
+            </p>
+            <p className={customerPasswordRule ? "password-rule" : "hide-data"}>
+              Password must be 8-16 characters and include at least 1 Uppercase, 1
+              lowercase, 1 number & 1 special character
             </p>
             <p
               className={

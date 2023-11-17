@@ -10,16 +10,31 @@ export default function CustomerLogin() {
     customer_email: "",
     customer_password: "",
   });
-  const [customerLoginFieldsError, setCustomerLoginFieldsError] = useState({});
+  const [customerLoginFieldsError, setCustomerLoginFieldsError] = useState({
+    customer_emailError:"",
+    customer_passwordError:""
+  });
   const [customerLoginAuthError, setCustomerLoginAuthError] = useState("");
   const custLoginValidDataObj = { isEmailValid: false, isPasswordValid: false };
-
-  const handleChangeCustomerLoginData = (e) => {
-    setCustomerLoginData((previousValue) => ({
-      ...previousValue,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  
+  const handleChangeCustomerEmail = (e)=>{
+    setCustomerLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
+    if(e.target.value===""){
+      setCustomerLoginFieldsError((previousError)=>({...previousError, customer_emailError:"Enter your email"}));
+    }
+    else{
+      setCustomerLoginFieldsError((previousError)=>({...previousError, customer_emailError:""}));
+    }
+  }
+  const handleChangeCustomerPassword = (e)=>{
+    setCustomerLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
+    if(e.target.value===""){
+      setCustomerLoginFieldsError((previousError)=>({...previousError, customer_passwordError:"Enter your password"}));
+    }
+    else{
+      setCustomerLoginFieldsError((previousError)=>({...previousError, customer_passwordError:""}));
+    }
+  }
   const validateCustomerEmail = () => {
     const emailRegx =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -63,7 +78,7 @@ export default function CustomerLogin() {
     setCustomerLoginAuthError("");
     validateCustomerEmail();
     validateCustomerPassword();
-    // console.log(customerLoginData);
+    console.log(customerLoginData);
     if (
       custLoginValidDataObj.isEmailValid === true &&
       custLoginValidDataObj.isPasswordValid === true
@@ -102,7 +117,7 @@ export default function CustomerLogin() {
               id="customer-email"
               className="login-signup-form-input"
               name="customer_email"
-              onChange={handleChangeCustomerLoginData}
+              onChange={handleChangeCustomerEmail}
             ></input>
             <p
               className={
@@ -121,7 +136,7 @@ export default function CustomerLogin() {
               id="customer-password"
               className="login-signup-form-input"
               name="customer_password"
-              onChange={handleChangeCustomerLoginData}
+              onChange={handleChangeCustomerPassword}
             ></input>
             <p
               className={

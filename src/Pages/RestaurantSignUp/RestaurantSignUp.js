@@ -15,7 +15,14 @@ export default function RestaurantSignUp() {
     restaurant_password: "",
   });
   const [restaurantPasswordRule, setRestaurantPasswordRule] = useState(false);
-  const [restSignUpFieldsError, setRestSignUpFieldsError] = useState({});
+  const [restSignUpFieldsError, setRestSignUpFieldsError] = useState({
+    restaurant_nameError:"",
+    restaurant_emailError:"",
+    restaurant_addressError:"",
+    restaurant_openingTimeError:"",
+    restaurant_closingTimeError:"",
+    restaurant_passwordError:""
+  });
   const [restSignUpAuthError, setRestSignUpAuthError] = useState("");
   const restSignUpValidDataObj = {
     isRestNameValid: false,
@@ -26,15 +33,63 @@ export default function RestaurantSignUp() {
     isRestPasswordValid: false,
   };
 
-  const handleChangeRestSignUpData = (e) => {
-    setRestSignUpData((previousValue) => ({
-      ...previousValue,
-      [e.target.name]: e.target.value.trim(),
-    }));
-  };
-  const handleKeyUpRestPasswordRule = () => {
-    setRestaurantPasswordRule(true);
-  };
+  const handleChangeRestName=(e)=>{
+    setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
+    if(e.target.value.trim()===""){
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_nameError:"Enter restaurant name"}));
+    }
+    else{
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_nameError:""}));
+    }
+  }
+  const handleChangeRestEmail=(e)=>{
+    setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
+    if(e.target.value.trim()===""){
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_emailError:"Enter restaurant email"}));
+    }
+    else{
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_emailError:""}));
+    }
+  }
+  const handleChangeRestAddress=(e)=>{
+    setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
+    if(e.target.value.trim()===""){
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_addressError:"Enter restaurant address"}));
+    }
+    else{
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_addressError:""}));
+    }
+  }
+  const handleChangeRestOpeningTime=(e)=>{
+    setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
+    if(e.target.value.trim()===""){
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_openingTimeError:"Enter restaurant opening time"}));
+    }
+    else{
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_openingTimeError:""}));
+    }
+  }
+  const handleChangeRestClosingTime=(e)=>{
+    setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
+    if(e.target.value.trim()===""){
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_closingTimeError:"Enter restaurant closing time"}));
+    }
+    else{
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_closingTimeError:""}));
+    }
+  }
+  const handleChangeRestPassword=(e)=>{
+    setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
+    if(e.target.value.trim()===""){
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_passwordError:"Enter restaurant password"}));
+      setRestaurantPasswordRule(false);
+    }
+    else{
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_passwordError:""}));
+      setRestaurantPasswordRule(true);
+    }
+  }
+
   const validateRestName = () => {
     if (restSignUpData.restaurant_name === "") {
       setRestSignUpFieldsError((previousError) => ({
@@ -119,6 +174,7 @@ export default function RestaurantSignUp() {
     }
   };
   const validateRestPassword = () => {
+    setRestaurantPasswordRule(false);
     if (restSignUpData.restaurant_password === "") {
       setRestSignUpFieldsError((previousError) => ({
         ...previousError,
@@ -142,6 +198,7 @@ export default function RestaurantSignUp() {
           restaurant_passwordError: "Password is not valid",
         }));
         restSignUpValidDataObj["isRestPasswordValid"] = false;
+        setRestaurantPasswordRule(true);
       } else if (restSignUpData.restaurant_password.length > 16) {
         setRestSignUpFieldsError((previousError) => ({
           ...previousError,
@@ -156,7 +213,6 @@ export default function RestaurantSignUp() {
         restSignUpValidDataObj["isRestPasswordValid"] = true;
       }
     }
-    setRestaurantPasswordRule(false);
   };
   const handleClickRestSignUp = async () => {
     setRestSignUpAuthError("");
@@ -208,7 +264,7 @@ export default function RestaurantSignUp() {
               id="restaurant-name"
               className="login-signup-form-input"
               name="restaurant_name"
-              onChange={handleChangeRestSignUpData}
+              onChange={handleChangeRestName}
             ></input>
             <p
               className={
@@ -227,7 +283,7 @@ export default function RestaurantSignUp() {
               id="restaurant-email"
               className="login-signup-form-input"
               name="restaurant_email"
-              onChange={handleChangeRestSignUpData}
+              onChange={handleChangeRestEmail}
             ></input>
             <p
               className={
@@ -245,7 +301,7 @@ export default function RestaurantSignUp() {
               id="restaurant-address"
               className="login-signup-form-input address-input"
               name="restaurant_address"
-              onChange={handleChangeRestSignUpData}
+              onChange={handleChangeRestAddress}
             ></textarea>
             <p
               className={
@@ -264,7 +320,7 @@ export default function RestaurantSignUp() {
               id="restaurant-opening-time"
               className="login-signup-form-input"
               name="restaurant_openingtime"
-              onChange={handleChangeRestSignUpData}
+              onChange={handleChangeRestOpeningTime}
             ></input>
             <p
               className={
@@ -283,7 +339,7 @@ export default function RestaurantSignUp() {
               id="restaurant-closing-time"
               className="login-signup-form-input"
               name="restaurant_closingtime"
-              onChange={handleChangeRestSignUpData}
+              onChange={handleChangeRestClosingTime}
             ></input>
             <p
               className={
@@ -302,15 +358,8 @@ export default function RestaurantSignUp() {
               id="restaurant-password"
               className="login-signup-form-input"
               name="restaurant_password"
-              onChange={handleChangeRestSignUpData}
-              onKeyUp={handleKeyUpRestPasswordRule}
+              onChange={handleChangeRestPassword}
             ></input>
-            <p
-              className={restaurantPasswordRule ? "password-rule" : "hide-data"}
-            >
-              Password must have 8 characters including 1 Uppercase, 1
-              lowercase, 1 number & 1 special character
-            </p>
             <p
               className={
                 restSignUpFieldsError.restaurant_passwordError === ""
@@ -319,6 +368,12 @@ export default function RestaurantSignUp() {
               }
             >
               {restSignUpFieldsError.restaurant_passwordError}
+            </p>
+            <p
+              className={restaurantPasswordRule ? "password-rule" : "hide-data"}
+            >
+              Password must have 8 characters including 1 Uppercase, 1
+              lowercase, 1 number & 1 special character
             </p>
             <p
               className={
