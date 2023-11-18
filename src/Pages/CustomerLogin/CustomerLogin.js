@@ -3,6 +3,7 @@ import "../../CommonStyle/loginandsignup.css";
 import customerpage from "../../Assets/customerpage.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function CustomerLogin() {
   const navigate = useNavigate();
@@ -16,7 +17,11 @@ export default function CustomerLogin() {
   });
   const [customerLoginAuthError, setCustomerLoginAuthError] = useState("");
   const custLoginValidDataObj = { isEmailValid: false, isPasswordValid: false };
-  
+  const [hidePassword, setHidePassword] = useState(true);
+
+  const handleClickShowPassword=()=>{
+    setHidePassword(!hidePassword);
+  }
   const handleChangeCustomerEmail = (e)=>{
     setCustomerLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
     if(e.target.value===""){
@@ -131,13 +136,22 @@ export default function CustomerLogin() {
           </div>
           <div className="login-signup-form-fields">
             <label htmlFor="customer-password">Password</label>
-            <input
-              type="password"
-              id="customer-password"
-              className="login-signup-form-input"
-              name="customer_password"
-              onChange={handleChangeCustomerPassword}
-            ></input>
+            <div className="login-signup-form-input password-input-div">
+              <input
+                type={hidePassword?"password":"text"}
+                id="customer-password"
+                className="password-input"
+                name="customer_password"
+                onChange={handleChangeCustomerPassword}
+              ></input>
+              <div className="show-hide-password-box" onClick={handleClickShowPassword}>
+                {hidePassword ? (
+                  <Visibility style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                ) : (
+                  <VisibilityOff style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                )}
+              </div>
+            </div>
             <p
               className={
                 customerLoginFieldsError.customer_passwordError === ""

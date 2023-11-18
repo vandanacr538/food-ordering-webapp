@@ -3,6 +3,7 @@ import "../../CommonStyle/loginandsignup.css";
 import restaurant from "../../Assets/restaurant.webp";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function RestaurantSignUp() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export default function RestaurantSignUp() {
     restaurant_passwordError:""
   });
   const [restSignUpAuthError, setRestSignUpAuthError] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
   const restSignUpValidDataObj = {
     isRestNameValid: false,
     isRestEmailValid: false,
@@ -33,6 +35,9 @@ export default function RestaurantSignUp() {
     isRestPasswordValid: false,
   };
 
+  const handleClickShowPassword=()=>{
+    setHidePassword(!hidePassword);
+  }
   const handleChangeRestName=(e)=>{
     setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
@@ -353,13 +358,22 @@ export default function RestaurantSignUp() {
           </div>
           <div className="login-signup-form-fields">
             <label htmlFor="restaurant-password">Password</label>
-            <input
-              type="password"
-              id="restaurant-password"
-              className="login-signup-form-input"
-              name="restaurant_password"
-              onChange={handleChangeRestPassword}
-            ></input>
+            <div className="login-signup-form-input password-input-div">
+              <input
+                type={hidePassword?"password":"text"}
+                id="restaurant-password"
+                className="password-input"
+                name="restaurant_password"
+                onChange={handleChangeRestPassword}
+              ></input>
+              <div className="show-hide-password-box" onClick={handleClickShowPassword}>
+                {hidePassword ? (
+                  <Visibility style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                ) : (
+                  <VisibilityOff style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                )}
+              </div>
+            </div>
             <p
               className={
                 restSignUpFieldsError.restaurant_passwordError === ""

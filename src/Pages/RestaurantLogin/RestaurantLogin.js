@@ -3,6 +3,7 @@ import "../../CommonStyle/loginandsignup.css";
 import restaurant from "../../Assets/restaurant.webp";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function RestaurantLogin() {
   const navigate = useNavigate();
@@ -15,11 +16,15 @@ export default function RestaurantLogin() {
     restaurant_passwordError:""
   });
   const [restLoginAuthError, setRestLoginAuthError] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
   const restLoginValidDataObj = {
     isRestEmailValid: false,
     isRestPasswordValid: false,
   };
 
+  const handleClickShowPassword=()=>{
+    setHidePassword(!hidePassword);
+  }
   const handleChangeRestEmail = (e)=>{
     setRestaurantLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
     if(e.target.value===""){
@@ -139,13 +144,22 @@ export default function RestaurantLogin() {
           </div>
           <div className="login-signup-form-fields">
             <label htmlFor="restaurant-password">Password</label>
-            <input
-              type="password"
-              id="restaurant-password"
-              className="login-signup-form-input"
-              name="restaurant_password"
-              onChange={handleChangeRestPassword}
-            ></input>
+            <div className="login-signup-form-input password-input-div">
+              <input
+                type={hidePassword?"password":"text"}
+                id="restaurant-password"
+                className="password-input"
+                name="restaurant_password"
+                onChange={handleChangeRestPassword}
+              ></input>
+              <div className="show-hide-password-box" onClick={handleClickShowPassword}>
+                {hidePassword ? (
+                  <Visibility style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                ) : (
+                  <VisibilityOff style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                )}
+              </div>
+            </div>
             <p
               className={
                 restLoginFieldsError.restaurant_passwordError === ""

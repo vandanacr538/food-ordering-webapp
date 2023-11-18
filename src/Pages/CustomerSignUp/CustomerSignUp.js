@@ -3,6 +3,7 @@ import "../../CommonStyle/loginandsignup.css";
 import customerpage from "../../Assets/customerpage.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function CustomerSignUp() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export default function CustomerSignUp() {
     customer_passwordError:"",
   });
   const [customerSignUpAuthError, setCustomerSignUpAuthError] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
   const custSignUpValidDataObj = {
     isNameValid: false,
     isEmailValid: false,
@@ -28,6 +30,9 @@ export default function CustomerSignUp() {
     isPasswordValid: false,
   };
 
+  const handleClickShowPassword=()=>{
+    setHidePassword(!hidePassword);
+  }
   const handleChangeCustomerName=(e)=>{
     setCustomerSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
@@ -76,9 +81,6 @@ export default function CustomerSignUp() {
       setCustomerPasswordRule(true);
       setCustomerSignUpFieldsError((previousError)=>({...previousError, customer_passwordError:""}));
     }
-  }
-  const handleBlurHideCustomerPassword=()=>{
-    setCustomerPasswordRule(false);
   }
 
   const validateCustomerName = () => {
@@ -305,14 +307,22 @@ export default function CustomerSignUp() {
           </div>
           <div className="login-signup-form-fields">
             <label htmlFor="customer-password">Password</label>
-            <input
-              type="password"
-              id="customer-password"
-              className="login-signup-form-input"
-              name="customer_password"
-              onChange={handleChangeCustomerPassword}
-              onBlur={handleBlurHideCustomerPassword}
-            ></input>
+            <div className="login-signup-form-input password-input-div">
+              <input
+                type={hidePassword?"password":"text"}
+                id="customer-password"
+                className="password-input"
+                name="customer_password"
+                onChange={handleChangeCustomerPassword}
+              ></input>
+              <div className="show-hide-password-box" onClick={handleClickShowPassword}>
+                {hidePassword ? (
+                  <Visibility style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                ) : (
+                  <VisibilityOff style={{ fontSize: "20px", color: "#5e5e5e" }} />
+                )}
+              </div>
+            </div>
             <p
               className={
                 customerSignUpFieldsError.customer_passwordError === ""
