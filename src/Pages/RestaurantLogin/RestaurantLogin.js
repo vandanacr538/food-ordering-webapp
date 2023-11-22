@@ -93,8 +93,8 @@ export default function RestaurantLogin() {
           restaurantLoginData
         );
         if (result.status === 200) {
-          console.log(result.data);
-          console.log("navigate to restaurant home page");
+          localStorage.setItem("r-token", result.data.token);
+          navigate("/restaurant/home");
         }
       } catch (e) {
         if (e.response.status === 401) {

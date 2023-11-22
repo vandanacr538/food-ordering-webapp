@@ -5,6 +5,9 @@ import CustomerLogin from './Pages/CustomerLogin/CustomerLogin';
 import CustomerSignUp from './Pages/CustomerSignUp/CustomerSignUp';
 import RestaurantLogin from './Pages/RestaurantLogin/RestaurantLogin';
 import RestaurantSignUp from './Pages/RestaurantSignUp/RestaurantSignUp';
+import RestaurantHomePage from './Pages/RestaurantHomePage/RestaurantHomePage';
+import AddFoodItem from './Pages/AddFoodItem/AddFoodItem';
+import RestaurantLayout from './Components/RestaurantLayout/RestaurantLayout';
 
 function App() {
   return (
@@ -16,6 +19,10 @@ function App() {
         <Route path='/customer/signup' element={<CustomerSignUp/>}></Route>
         <Route path='/restaurant/login' element={<RestaurantLogin/>}></Route>
         <Route path='/restaurant/signup' element={<RestaurantSignUp/>}></Route>
+        <Route path='/restaurant' element={<RestaurantLayout/>}>
+          <Route path='/restaurant/home' element={<RestaurantHomePage/>}></Route>
+          <Route path='/restaurant/addfooditem' element={<AddFoodItem/>}></Route>
+        </Route>
       </Routes>
       </BrowserRouter>
     </div>

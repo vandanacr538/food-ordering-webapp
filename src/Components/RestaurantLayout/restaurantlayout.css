@@ -1,0 +1,9 @@
+.main-container {
+    display: flex;
+    position: relative;
+    margin-top: 70px;
+}
+.outlet-container{
+    width:80%;
+    padding: 20px;
+}

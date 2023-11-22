@@ -1,0 +1,35 @@
+.sidenav-container{
+    width: 20%;
+    height: auto;
+    min-height: 100vh;
+    background-color: #fff;
+}
+.sidenav-container ul{
+    padding: 0px;
+    margin: 0px;
+}
+.sidenav-list{
+    list-style-type: none;
+    width: 180px;
+    height: 26px;
+    padding: 20px 5px;
+    box-sizing: border-box;
+    margin: 30px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ff9100;
+    cursor: pointer;
+}
+.sidenav-list:hover{
+    background-color: #ff91009a;
+    color: #000;
+}
+.sidenav-list-icon{
+    margin-right: 8px;
+}
+.sidenav-active-list{
+    background-color: #ff910050;
+    color: #ff7b00;
+}

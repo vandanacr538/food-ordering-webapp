@@ -227,7 +227,6 @@ export default function RestaurantSignUp() {
     validateRestOpeningTime();
     validateRestClosingTime();
     validateRestPassword();
-    console.log(restSignUpValidDataObj);
     if (Object.values(restSignUpValidDataObj).every(Boolean)) {
       try {
         const result = await axios.post(
@@ -238,8 +237,7 @@ export default function RestaurantSignUp() {
           if (result.data.token === "restaurant-already-exists") {
             setRestSignUpAuthError(result.data.msg);
           } else {
-            console.log(result.data);
-            console.log("navigate to restaurant home page");
+            navigate("/restaurant/login");
           }
         }
       } catch (e) {
@@ -304,7 +302,7 @@ export default function RestaurantSignUp() {
             <label htmlFor="restaurant-address">Address of Restaurant</label>
             <textarea
               id="restaurant-address"
-              className="login-signup-form-input address-input"
+              className="login-signup-form-input"
               name="restaurant_address"
               onChange={handleChangeRestAddress}
             ></textarea>
