@@ -28,7 +28,7 @@ export default function RestaurantLogin() {
   const handleChangeRestEmail = (e)=>{
     setRestaurantLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
     if(e.target.value===""){
-      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_emailError:"Enter restaurant email"}));
+      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_emailError:"Enter the restaurant email"}));
     }
     else{
       setRestLoginFieldsError((previousError)=>({...previousError, restaurant_emailError:""}));
@@ -37,7 +37,7 @@ export default function RestaurantLogin() {
   const handleChangeRestPassword = (e)=>{
     setRestaurantLoginData((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
     if(e.target.value===""){
-      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_passwordError:"Enter restaurant password"}));
+      setRestLoginFieldsError((previousError)=>({...previousError, restaurant_passwordError:"Enter the restaurant password"}));
     }
     else{
       setRestLoginFieldsError((previousError)=>({...previousError, restaurant_passwordError:""}));
@@ -49,7 +49,7 @@ export default function RestaurantLogin() {
     if (restaurantLoginData.restaurant_email === "") {
       setRestLoginFieldsError((previousError) => ({
         ...previousError,
-        restaurant_emailError: "Enter restaurant email",
+        restaurant_emailError: "Enter the restaurant email",
       }));
       restLoginValidDataObj["isRestEmailValid"] = false;
     } else if (emailRegx.test(restaurantLoginData.restaurant_email) === false) {
@@ -70,7 +70,7 @@ export default function RestaurantLogin() {
     if (restaurantLoginData.restaurant_password === "") {
       setRestLoginFieldsError((previousError) => ({
         ...previousError,
-        restaurant_passwordError: "Enter restaurant password",
+        restaurant_passwordError: "Enter the restaurant password",
       }));
       restLoginValidDataObj["isRestPasswordValid"] = false;
     } else {

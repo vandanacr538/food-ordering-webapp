@@ -224,29 +224,29 @@ export default function AddFoodItem() {
             <p className={ addItemFieldsError.addItem_pictureError === "" ? "hide-data" : "display-input-data-error"}>
               {addItemFieldsError.addItem_pictureError}
             </p>
-            <p className={ addItemError=== "" ? "hide-data": "display-add-edit-error"}>
+            <p className={ addItemError=== "" ? "hide-data": "form-submit-fail-error"}>
               {addItemError}
             </p>
           </div>
           <button className='form-submit-btn' onClick={handleClickAddFood}>Add Item</button>
-          <p className={ addSuccess=== "" ? "hide-data": "display-add-edit-success"}>
+          <p className={ addSuccess=== "" ? "hide-data": "form-submit-success-msg"}>
               {addSuccess}
           </p>
         </div>
         <div className='form-page-image-container'>
           <h3>Add a New, Delicious, tasty food to your Restaurant Menu</h3>
           <div className='form-page-images-box'>
-            <div className='add-edit-image-card'>
-              <img src={addfood1} alt="addfood1" className='add-edit-page-img'></img>
+            <div className='form-page-image-card'>
+              <img src={addfood1} alt="addfood1" className='form-page-img'></img>
             </div>
-            <div className='add-edit-image-card'>
-            <img src={addfood2} alt="addfood2" className='add-edit-page-img'></img>
+            <div className='form-page-image-card'>
+            <img src={addfood2} alt="addfood2" className='form-page-img'></img>
             </div>
-            <div className='add-edit-image-card'>
-              <img src={addfood3} alt="addfood3" className='add-edit-page-img'></img>
+            <div className='form-page-image-card'>
+              <img src={addfood3} alt="addfood3" className='form-page-img'></img>
             </div>
-            <div className='add-edit-image-card'>
-              <img src={addfood4} alt="addfood4" className='add-edit-page-img'></img>
+            <div className='form-page-image-card'>
+              <img src={addfood4} alt="addfood4" className='form-page-img'></img>
             </div>
           </div>
         </div>

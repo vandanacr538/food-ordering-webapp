@@ -20,6 +20,9 @@ export default function RestaurantHeader() {
   const gotoRestHomePage=()=>{
     navigate("/restaurant/home");
   }
+  const gotoRestSettingsPage=()=>{
+    navigate("/restaurant/settings");
+  }
   useEffect(()=>{
     getRestDetails();
   },[])
@@ -34,7 +37,7 @@ export default function RestaurantHeader() {
             <h1 className='rheader-heading'>{restaurantData.restaurant_name}</h1>
           </div>
         </div>
-        <div className="settings-icon-rheader">
+        <div className="settings-icon-rheader" onClick={gotoRestSettingsPage}>
           <ManageAccounts sx={{ height: "45px", width: "50px", color: "#ff9100" }} className='manage-account-icon'/>
         </div>
       </header>

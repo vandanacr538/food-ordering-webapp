@@ -41,7 +41,7 @@ export default function RestaurantSignUp() {
   const handleChangeRestName=(e)=>{
     setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
-      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_nameError:"Enter restaurant name"}));
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_nameError:"Enter the restaurant name"}));
     }
     else{
       setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_nameError:""}));
@@ -50,7 +50,7 @@ export default function RestaurantSignUp() {
   const handleChangeRestEmail=(e)=>{
     setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
-      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_emailError:"Enter restaurant email"}));
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_emailError:"Enter the restaurant email"}));
     }
     else{
       setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_emailError:""}));
@@ -59,7 +59,7 @@ export default function RestaurantSignUp() {
   const handleChangeRestAddress=(e)=>{
     setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
-      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_addressError:"Enter restaurant address"}));
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_addressError:"Enter the restaurant address"}));
     }
     else{
       setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_addressError:""}));
@@ -68,7 +68,7 @@ export default function RestaurantSignUp() {
   const handleChangeRestOpeningTime=(e)=>{
     setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
-      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_openingTimeError:"Enter restaurant opening time"}));
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_openingTimeError:"Enter the restaurant opening time"}));
     }
     else{
       setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_openingTimeError:""}));
@@ -77,7 +77,7 @@ export default function RestaurantSignUp() {
   const handleChangeRestClosingTime=(e)=>{
     setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
-      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_closingTimeError:"Enter restaurant closing time"}));
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_closingTimeError:"Enter the restaurant closing time"}));
     }
     else{
       setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_closingTimeError:""}));
@@ -86,7 +86,7 @@ export default function RestaurantSignUp() {
   const handleChangeRestPassword=(e)=>{
     setRestSignUpData((previousValue)=>({...previousValue, [e.target.name]:e.target.value.trim()}));
     if(e.target.value.trim()===""){
-      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_passwordError:"Enter restaurant password"}));
+      setRestSignUpFieldsError((previousError)=>({...previousError, restaurant_passwordError:"Enter the restaurant password"}));
       setRestaurantPasswordRule(false);
     }
     else{
@@ -99,7 +99,7 @@ export default function RestaurantSignUp() {
     if (restSignUpData.restaurant_name === "") {
       setRestSignUpFieldsError((previousError) => ({
         ...previousError,
-        restaurant_nameError: "Enter restaurant name",
+        restaurant_nameError: "Enter the restaurant name",
       }));
       restSignUpValidDataObj["isRestNameValid"] = false;
     } else {
@@ -116,7 +116,7 @@ export default function RestaurantSignUp() {
     if (restSignUpData.restaurant_email === "") {
       setRestSignUpFieldsError((previousError) => ({
         ...previousError,
-        restaurant_emailError: "Enter restaurant email",
+        restaurant_emailError: "Enter the restaurant email",
       }));
       restSignUpValidDataObj["isRestEmailValid"] = false;
     } else if (emailRegx.test(restSignUpData.restaurant_email) === false) {
@@ -137,7 +137,7 @@ export default function RestaurantSignUp() {
     if (restSignUpData.restaurant_address === "") {
       setRestSignUpFieldsError((previousError) => ({
         ...previousError,
-        restaurant_addressError: "Enter restaurant address",
+        restaurant_addressError: "Enter the restaurant address",
       }));
       restSignUpValidDataObj["isRestAddressValid"] = false;
     } else {
@@ -152,7 +152,7 @@ export default function RestaurantSignUp() {
     if (restSignUpData.restaurant_openingtime === "") {
       setRestSignUpFieldsError((previousError) => ({
         ...previousError,
-        restaurant_openingTimeError: "Enter restaurant opening time",
+        restaurant_openingTimeError: "Enter the restaurant opening time",
       }));
       restSignUpValidDataObj["isRestOpeningTimeValid"] = false;
     } else {
@@ -167,7 +167,7 @@ export default function RestaurantSignUp() {
     if (restSignUpData.restaurant_closingtime === "") {
       setRestSignUpFieldsError((previousError) => ({
         ...previousError,
-        restaurant_closingTimeError: "Enter restaurant closing time",
+        restaurant_closingTimeError: "Enter the restaurant closing time",
       }));
       restSignUpValidDataObj["isRestClosingTimeValid"] = false;
     } else {
@@ -183,7 +183,7 @@ export default function RestaurantSignUp() {
     if (restSignUpData.restaurant_password === "") {
       setRestSignUpFieldsError((previousError) => ({
         ...previousError,
-        restaurant_passwordError: "Enter restaurant password",
+        restaurant_passwordError: "Enter the restaurant password",
       }));
       restSignUpValidDataObj["isRestPasswordValid"] = false;
     } else {
