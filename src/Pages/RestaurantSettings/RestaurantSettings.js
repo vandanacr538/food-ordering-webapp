@@ -36,7 +36,9 @@ export default function RestaurantSettings() {
     setRestDetails(decodeToken(result.data.token));
   }
   useEffect(()=>{
-    getRestDetails();
+    if(localStorage.getItem("r-token")){
+      getRestDetails();
+    }
   }, []);
   const handleClickEnableEdit=()=>{
     setDisabled(!disabled);

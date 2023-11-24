@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import "../../CommonStyle/form.css";
 import editfoodimg from "../../Assets/editfoodimg.avif";
@@ -28,6 +28,11 @@ export default function EditFoodItem() {
     isItemPictureValid: false,
   };
 
+  useEffect(()=>{
+    if(localStorage.getItem("r-token") && !editFoodItem){
+      navigate("/restaurant/foodmenu");
+    }
+  },[])
   const handleChangeEditItemName = (e)=>{
     setEditFoodItem((previousValue)=>({...previousValue, [e.target.name]:e.target.value}));
     if(e.target.value===""){
@@ -174,7 +179,8 @@ export default function EditFoodItem() {
     <div className='form-maincontainer'>
       <h2>Edit Food Item</h2>
       <div className='form-container'>
-        <div className='form-box'>
+        {editFoodItem && (
+          <div className='form-box'>
           <div className="form-fields">
             <label htmlFor="item-name">Item Name</label>
             <input type='text'id="item-name" name="item_name" 
@@ -245,6 +251,7 @@ export default function EditFoodItem() {
               {editItemSuccess}
           </p>
         </div>
+        )}
         <div className='form-page-image-container'>
           <div className='form-page-images-box'>
             <img src={editfoodimg} alt="edit-food-img1" className='single-image-in-form'></img>

@@ -24,7 +24,9 @@ export default function RestaurantHeader() {
     navigate("/restaurant/settings");
   }
   useEffect(()=>{
-    getRestDetails();
+    if(localStorage.getItem("r-token")){
+      getRestDetails();
+    }
   },[])
   return (
     <div>

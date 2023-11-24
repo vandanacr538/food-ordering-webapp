@@ -17,7 +17,6 @@ export default function RestaurantFoodMenu() {
       });
       if(result.status===200){
         setFoodItems(result.data);
-        console.log(result.data);
       }
     }
     catch(e){
@@ -25,7 +24,9 @@ export default function RestaurantFoodMenu() {
     }
   }
   useEffect(()=>{
-    getFoodItems();
+    if(localStorage.getItem("r-token")){
+      getFoodItems();
+    }
   },[]);
   const navigateToEdit=(item)=>{
     navigate("/restaurant/editfooditem", { state: item })
@@ -48,8 +49,8 @@ export default function RestaurantFoodMenu() {
         <tbody>
           {foodItems && (
             <>
-              {foodItems.map((row)=>(
-                <tr>
+              {foodItems.map((row, index)=>(
+                <tr key={index}>
                   <td><img src={row.item_picture_url} alt={row.item_name} className="item-img-in-menu"></img></td>
                   <td>{row.item_name}</td>
                   <td>{row.item_quantity}</td>

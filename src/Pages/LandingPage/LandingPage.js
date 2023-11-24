@@ -10,7 +10,12 @@ export default function LandingPage() {
     navigate("/customer/login");
   } 
   const loginAsRestaurant=()=>{
-    navigate("/restaurant/login");
+    if(localStorage.getItem("r-token")){
+      navigate("/restaurant/home");
+    }
+    else {
+      navigate("/restaurant/login");
+    }
   }
 
   return (
