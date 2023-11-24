@@ -9,6 +9,8 @@ import RestaurantHomePage from './Pages/RestaurantHomePage/RestaurantHomePage';
 import AddFoodItem from './Pages/AddFoodItem/AddFoodItem';
 import RestaurantLayout from './Components/RestaurantLayout/RestaurantLayout';
 import RestaurantSettings from './Pages/RestaurantSettings/RestaurantSettings';
+import RestaurantFoodMenu from './Pages/RestaurantFoodMenu/RestaurantFoodMenu';
+import EditFoodItem from './Pages/EditFoodItem/EditFoodItem';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path='/restaurant/home' element={<RestaurantHomePage/>}></Route>
           <Route path='/restaurant/addfooditem' element={<AddFoodItem/>}></Route>
           <Route path='/restaurant/settings' element={<RestaurantSettings/>}></Route>
+          <Route path='/restaurant/foodmenu' element={<RestaurantFoodMenu/>}></Route>
+          <Route path='/restaurant/editfooditem' element={<EditFoodItem/>}></Route>
         </Route>
       </Routes>
       </BrowserRouter>

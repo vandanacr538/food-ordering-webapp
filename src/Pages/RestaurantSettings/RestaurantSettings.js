@@ -332,7 +332,7 @@ export default function RestaurantSettings() {
         </div>
         <div className='form-page-image-container'>
           <div className='form-page-images-box setting-img-box'>
-            <img src={settingimg1} alt="settingimg1" className='image-in-rest-setting'></img>
+            <img src={settingimg1} alt="settingimg1" className='single-image-in-form'></img>
           </div>
         </div>
       </div>

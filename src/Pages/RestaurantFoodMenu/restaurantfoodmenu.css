@@ -1,0 +1,55 @@
+.foodmenu-maincontainer{
+    width: 100%;
+    background-color: #fff;
+    padding:35px 50px 60px;
+    box-sizing: border-box;
+}
+.foodmenu-maincontainer h2{
+    margin: 0px;
+    color: #000;
+}
+.foodmenu-table{
+    width: 100%;
+    margin: 25px auto;
+    padding: 0;
+    border-collapse: collapse;
+    border: 3px solid #eee;
+    background-color: #faf9f9;
+    text-align: center;
+    font-size: 14px;
+}
+.foodmenu-table thead{
+    background-color: #ff910050;
+    color: #000;
+    height: 50px;
+}
+.foodmenu-table th, .foodmenu-table td{
+    margin: 0;
+    border: 0;
+    border: 1px solid #eee;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.foodmenu-table tbody tr:hover{
+    background-color: #faf7f4;
+}
+.item-img-in-menu{
+    width: 180px;
+    height: 110px;
+}
+.table-action-btn{
+    background-color: #ff9100;
+    border: none;
+    width: 60px;
+    height: 25px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.table-action-btn:hover{
+    background-color: #ff7b00;
+}
+.table-loading-icon-div{
+    height: 300px;
+    padding-top:50px;
+    box-sizing: border-box;
+}

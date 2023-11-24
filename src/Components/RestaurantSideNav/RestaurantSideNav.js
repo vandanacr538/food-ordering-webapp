@@ -1,6 +1,6 @@
 import React from 'react'
 import "./restaurantsidenav.css";
-import { AddCard, Grading, HomeSharp, Logout, ManageAccounts } from '@mui/icons-material';
+import { AddCard, Grading, HomeSharp, ListSharp, Logout, ManageAccounts, MenuBook } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function RestaurantSideNav() {
@@ -9,6 +9,9 @@ export default function RestaurantSideNav() {
 
   const gotoRestHome=()=>{
     navigate("/restaurant/home");
+  }
+  const gotoRestFoodList=()=>{
+    navigate("/restaurant/foodmenu");
   }
   const gotoRestAddItem=()=>{
     navigate("/restaurant/addfooditem");
@@ -27,6 +30,10 @@ export default function RestaurantSideNav() {
           <li className={(pathname==="/restaurant/home")?"sidenav-list sidenav-active-list":"sidenav-list"} onClick={gotoRestHome}>
             <HomeSharp className='sidenav-list-icon'/>
             <span>Home</span>
+          </li>
+          <li className={(pathname==="/restaurant/foodmenu")?"sidenav-list sidenav-active-list":"sidenav-list"} onClick={gotoRestFoodList}>
+            <MenuBook className='sidenav-list-icon'/>
+            <span>Food Menu</span>
           </li>
           <li className={(pathname==="/restaurant/addfooditem")?"sidenav-list sidenav-active-list":"sidenav-list"} onClick={gotoRestAddItem}>
             <AddCard className='sidenav-list-icon'/>
