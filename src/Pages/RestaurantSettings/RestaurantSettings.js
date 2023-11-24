@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { decodeToken } from 'react-jwt';
 import "../../CommonStyle/form.css";
-import settingimg1 from "../../Assets/settingimg1.avif";
+import settingsimg from "../../Assets/settingsimg.avif";
 
 export default function RestaurantSettings() {
   const [restDetails, setRestDetails] =useState({});
@@ -334,7 +334,7 @@ export default function RestaurantSettings() {
         </div>
         <div className='form-page-image-container'>
           <div className='form-page-images-box setting-img-box'>
-            <img src={settingimg1} alt="settingimg1" className='single-image-in-form'></img>
+            <img src={settingsimg} alt="settingimg1" className='single-image-in-form'></img>
           </div>
         </div>
       </div>

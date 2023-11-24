@@ -53,3 +53,98 @@
     padding-top:50px;
     box-sizing: border-box;
 }
+.no-items-present{
+    font-size: 16px;
+    color: #000;
+    text-align: center;
+}
+.view-modal-container{
+    background-color: #fff;
+    width: 30%;
+    height: auto;
+    padding: 10px 25px 30px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.507);
+}
+.view-modal-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0px;
+    box-sizing: border-box;
+}
+.view-modal-header h3{
+    font-size: 18px;
+    margin: 0px;
+}
+.view-modal-img-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.img-in-viewmodal{
+    width: 300px;
+    height: 200px;
+}
+.view-modal-content-box p{
+    margin: 20px 0px;
+    font-size: 14px;
+}
+.view-modal-content-box span{
+    font-weight: bold;
+}
+.close-icon{
+    cursor: pointer;
+}
+.close-icon:hover{
+    color: #ff7b00 !important;
+}
+.delete-modal{
+    background-color: #fff;
+    width: 28%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.507);
+}
+.delete-modal h3{
+    font-size: 18px;
+}
+.delete-modal p{
+    font-size: 14px;
+}
+.delete-modal hr{
+    border: 1px solid #eee;
+    width: 90%;
+}
+.delete-modal-btns{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 25px auto 25px;
+}
+.delete-confirm-btn, .cancel-btn{
+    background-color: #ff9100;
+    border: none;
+    width: 80px;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.cancel-btn{
+    background: #eee;
+}
+.delete-confirm-btn:hover{
+    background-color: #ff7b00;
+}
+.cancel-btn:hover{
+    border: 1px solid #ff9100;
+}
