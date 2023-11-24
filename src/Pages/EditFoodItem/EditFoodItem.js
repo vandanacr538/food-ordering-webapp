@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import "../../CommonStyle/form.css";
-import editfoodimg from "../../Assets/editfoodimg.avif";
+import editpageimg from "../../Assets/editpageimg.png";
 import { Edit } from '@mui/icons-material';
 import axios from 'axios';
 
@@ -254,7 +254,7 @@ export default function EditFoodItem() {
         )}
         <div className='form-page-image-container'>
           <div className='form-page-images-box'>
-            <img src={editfoodimg} alt="edit-food-img1" className='single-image-in-form'></img>
+            <img src={editpageimg} alt="edit-food-img1" className='single-image-in-form'></img>
           </div>
         </div>
       </div>

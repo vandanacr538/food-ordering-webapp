@@ -10,11 +10,11 @@
 }
 .sidenav-list{
     list-style-type: none;
-    width: 180px;
+    width: 200px;
     height: 26px;
-    padding: 20px 5px;
+    padding: 18px 5px;
     box-sizing: border-box;
-    margin: 30px;
+    margin: 20px auto;
     border-radius: 3px;
     display: flex;
     align-items: center;

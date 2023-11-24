@@ -62,7 +62,7 @@
     background-color: #fff;
     width: 30%;
     height: auto;
-    padding: 10px 25px 30px;
+    padding: 10px 30px 30px;
     box-sizing: border-box;
     position: fixed;
     left: 50%;
@@ -92,6 +92,7 @@
 .view-modal-content-box p{
     margin: 20px 0px;
     font-size: 14px;
+    text-align: justify;
 }
 .view-modal-content-box span{
     font-weight: bold;
