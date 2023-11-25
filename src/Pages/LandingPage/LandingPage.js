@@ -7,7 +7,12 @@ import { useNavigate } from 'react-router-dom';
 export default function LandingPage() {
   const navigate = useNavigate();
   const loginAsCustomer=()=>{
-    navigate("/customer/login");
+    if(localStorage.getItem("c-token")){
+      navigate("/customer/home");
+    }
+    else{
+      navigate("/customer/login");
+    }
   } 
   const loginAsRestaurant=()=>{
     if(localStorage.getItem("r-token")){

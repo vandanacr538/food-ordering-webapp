@@ -93,8 +93,10 @@ export default function CustomerLogin() {
           "http://localhost:8080/customer/login",
           customerLoginData
         );
-        console.log(result.data);
-        console.log("navigate to customer home page");
+        if(result.status===200){
+          localStorage.setItem("c-token", result.data.token);
+          navigate("/customer/home");
+        }
       } catch (e) {
         if (e.response.status === 401) {
           setCustomerLoginAuthError(e.response.data.msg);

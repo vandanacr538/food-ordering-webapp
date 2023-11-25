@@ -12,6 +12,10 @@ import RestaurantSettings from './Pages/RestaurantSettings/RestaurantSettings';
 import RestaurantFoodMenu from './Pages/RestaurantFoodMenu/RestaurantFoodMenu';
 import EditFoodItem from './Pages/EditFoodItem/EditFoodItem';
 import RestaurantProtectedLayout from './Components/RestaurantProtectedLayout/RestaurantProtectedLayout';
+import CustomerHomePage from './Pages/CustomerHomePage/CustomerHomePage';
+import CustomerLayout from './Components/CustomerLayout/CustomerLayout';
+import CustomerProtectedLayout from './Components/CustomerProtectedLayout/CustomerProtectedLayout';
+import CustomerProfile from './Pages/CustomerProfile/CustomerProfile';
 
 function App() {
   return (
@@ -26,6 +30,12 @@ function App() {
             <Route path='/restaurant/settings' element={<RestaurantSettings/>}></Route>
             <Route path='/restaurant/foodmenu' element={<RestaurantFoodMenu/>}></Route>
             <Route path='/restaurant/editfooditem' element={<EditFoodItem/>}></Route>
+          </Route>
+        </Route>
+        <Route path='/customer' element={<CustomerProtectedLayout/>}>
+          <Route path='/customer' element={<CustomerLayout/>}>
+            <Route path='/customer/home' element={<CustomerHomePage/>}></Route>
+            <Route path='/customer/profile' element={<CustomerProfile/>}></Route>
           </Route>
         </Route>
         <Route path='/customer/login' element={<CustomerLogin/>}></Route>

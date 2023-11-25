@@ -229,8 +229,7 @@ export default function CustomerSignUp() {
           if (result.data.token === "customer-already-exists") {
             setCustomerSignUpAuthError(result.data.msg);
           } else {
-            console.log(result.data.token);
-            console.log("navigate to customer home page");
+            navigate("/customer/login");
           }
         }
       } catch (e) {
