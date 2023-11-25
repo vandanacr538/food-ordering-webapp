@@ -13,6 +13,10 @@ export default function CustomerHeader() {
   const gotoCustProfilePage = ()=>{
     navigate("/customer/profile");
   }
+  const logOutCustomer=()=>{
+    localStorage.removeItem("c-token");
+    navigate("/");
+  }
   return (
     <div>
         <header>
@@ -41,7 +45,7 @@ export default function CustomerHeader() {
                   onClick={gotoCustProfilePage}
                   >Profile
                 </li>
-                <li className='cust-header-list'>Logout</li>
+                <li className='cust-header-list' onClick={logOutCustomer}>Logout</li>
             </ul>
         </div>
       </header>
