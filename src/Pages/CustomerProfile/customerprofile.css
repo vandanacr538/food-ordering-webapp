@@ -1,13 +1,13 @@
 .cust-profile-page-container{
     width: 50%;
-    height: auto;
-    background-color: #fff;
+    height: 100vh;
     padding: 10px 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0px auto;
+    border-radius: 5px;
 }
 .cust-profile-editbox{
     width: 80%;

@@ -1,0 +1,8 @@
+.outlet-main-container{
+    width: 100%;
+    margin-top: 70px;
+    padding: 20px 35px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+}

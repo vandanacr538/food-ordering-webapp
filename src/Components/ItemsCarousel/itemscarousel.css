@@ -1,0 +1,114 @@
+.items-carousel-maincontainer{
+    width: 100%;
+    padding: 10px 0px;
+    box-sizing: border-box;
+    position: relative;
+}
+.items-carousel-maincontainer h2{
+    margin: 0px 0px 20px;
+}
+.items-carousel-cards{
+    background-color: #ece5da;
+    margin: 10px 0px;
+    display: flex;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    overflow-x: scroll;
+}
+.items-carousel-cards::-webkit-scrollbar { 
+    display: none;
+}
+.items-carousel-card{
+    background-color: #ff910044;
+    margin: 5px 20px 5px 0px;
+}
+.items-carousel-card:last-child{
+    margin-right: 0px;
+}
+.item-car-img-box{
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.item-carousel-img{
+    width: 250px;
+    height: 200px;
+}
+.item-carousel-details-box{
+    margin: 15px;
+}
+.item-name-in-carousel{
+    font-size: 20px;
+    margin: 15px 0px;
+}
+.item-desc-in-carousel-box{
+    font-size: 14px;
+    margin: 15px 0px 5px;
+    display: flex;
+}
+.item-desc-content{
+    margin: 0px;
+}
+.item-desc-more, .item-desc-less{
+    cursor: pointer;
+}
+.item-desc-more{
+    align-items: center;
+}
+.item-desc-less{
+    align-items: flex-end;
+}
+.item-price-in-carousel{
+    font-weight: bold;
+    font-size: 18px;
+}
+.item-price-cart-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-cart-icon{
+    cursor: pointer;
+}
+.add-cart-icon:hover{
+    color: #ff7b00 !important;
+}
+.item-carousel-nav-left, .item-carousel-nav-right{
+    position: absolute;
+    top: 40%;
+    z-index: 1;
+    background-color: #ffffffd5;
+    border: none;
+    height: 70px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.item-carousel-nav-left{
+    left: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 3px 3px 3px -1px #9c9c9c, 3px -2px 3px -1px #9c9c9c;
+}
+.item-carousel-nav-right{
+    right: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: -2px 1px 2px 0px #9c9c9c, -2px -1px 2px 0px #9c9c9c;
+}
+.item-carousel-nav-left:hover, .item-carousel-nav-right:hover{
+    background-color: #ffffffe3 ;
+}
+.item-carousel-nav-left:focus, .item-carousel-nav-right:focus{
+    border-radius: 5px;
+    border: 2px solid #ff9100;
+    box-shadow: 0 1px 1px 0 #fff;
+    color: #000;
+}
+.item-carousel-nav{
+    font-size: 35px !important;
+    color: #ff9100 !important;
+}
