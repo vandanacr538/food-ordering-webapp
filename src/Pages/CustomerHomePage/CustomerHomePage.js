@@ -25,7 +25,6 @@ export default function CustomerHomePage() {
   }
   useEffect(()=>{
     getCustomerDetails();
-    console.log(customerDetails);
   }, []);
   const exploreFood=(e)=>{
     e.preventDefault();

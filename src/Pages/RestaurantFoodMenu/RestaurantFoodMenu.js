@@ -17,7 +17,7 @@ export default function RestaurantFoodMenu() {
   
   const getFoodItems = async ()=>{
     try{
-      const result = await axios.get("http://localhost:8080/restaurant_food/get_rest_fooditemslist", {
+      const result = await axios.post("http://localhost:8080/restaurant_food/get_rest_fooditemslist", {}, {
         headers:{
             Authorization:localStorage.getItem("r-token")
         }

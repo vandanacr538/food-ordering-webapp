@@ -48,33 +48,3 @@ header{
     background-color: #ff910050;
     color: #ff7b00;
 }
-.search-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 450px;
-    height: 36px;
-    border-radius: 20px;
-    border: none;
-    border: 1px solid #eee;
-    padding-left: 10px;
-}
-.header-search{
-    height: 85%;
-    width: 85%;
-    border: 0;
-}
-.header-search:focus{
-    outline: none;
-}
-.search-div:focus-within{
-    border: 1px solid #ff9100;
-}
-.search-icon{
-    padding-right:10px;
-    color: #a5a2a2;
-    cursor: pointer;
-}
-.search-icon:hover{
-    color: #ff9100;
-}

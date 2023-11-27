@@ -10,8 +10,14 @@ export default function CustomerHeader() {
   const gotoCustHomePage = ()=>{
     navigate("/customer/home");
   }
+  const gotoRestaurantsPage = ()=>{
+    navigate("/customer/restaurantslist");
+  }
   const gotoCustProfilePage = ()=>{
     navigate("/customer/profile");
+  }
+  const gotoCustCartPage = ()=>{
+    navigate("/customer/cart");
   }
   const logOutCustomer=()=>{
     localStorage.removeItem("c-token");
@@ -25,12 +31,6 @@ export default function CustomerHeader() {
             <FoodBank sx={{ width: "65px", height: "60px", color: "#ff9100" }} className='foodbank-icon' onClick={gotoCustHomePage}/>
           </div>
         </div>
-        <div className='search-div'>
-            <input type='text' className='header-search' 
-            placeholder='Search food'
-            ></input>
-            <Search className='search-icon' />
-        </div>
         <div className='cust-header-list-div'>
             <ul>
                 <li 
@@ -38,8 +38,15 @@ export default function CustomerHeader() {
                   onClick={gotoCustHomePage}
                 >Home
                 </li>
-                <li className='cust-header-list'>Restaurants</li>
-                <li className='cust-header-list'>Cart</li>
+                <li 
+                className={(pathname==="/customer/restaurantslist")?"cust-header-list cust-header-active-list":"cust-header-list"}
+                onClick={gotoRestaurantsPage}
+                >Restaurants</li>
+                <li 
+                  className={(pathname==="/customer/cart")?"cust-header-list cust-header-active-list":"cust-header-list"}
+                  onClick={gotoCustCartPage}
+                  >Cart
+                </li>
                 <li
                   className={(pathname==="/customer/profile")?"cust-header-list cust-header-active-list":"cust-header-list"}
                   onClick={gotoCustProfilePage}

@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import "./itemscarousel.css";
 import { AddShoppingCart, KeyboardArrowDown, KeyboardArrowUp, NavigateBefore, NavigateNext } from '@mui/icons-material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ItemsCarousel() {
+  const navigate = useNavigate();
   const itemCarouselElement = useRef();
   const [foodList, setFoodList] = useState();
   const [fullDescription, setFullDescription] = useState(false);
@@ -40,6 +42,23 @@ export default function ItemsCarousel() {
   const handleClickDisplayFullDesc=()=>{
     setFullDescription(!fullDescription);
   }
+  const addItemToCart=async(item)=>{
+    const itemToAddToCart = {item:item, quantity:1}
+    try{
+      const result = await axios.post("http://localhost:8080/cart/add_to_cart", itemToAddToCart, 
+      {
+        headers:{
+          Authorization:localStorage.getItem("c-token")
+        }
+      });
+      if(result.status===200){
+        navigate("/customer/cart");
+      }
+    }
+    catch(e){
+      console.log(e.response.data.msg);
+    }
+  }
   return (
     <div className='items-carousel-maincontainer'>
       <h2>Food items full list</h2>
@@ -50,9 +69,9 @@ export default function ItemsCarousel() {
         <button className="item-carousel-nav-right" onClick={handleClickItemCarForward}>
           <NavigateNext className="item-carousel-nav"/>
         </button>
-        {foodList ? foodList.map((element)=>{
+        {foodList ? foodList.map((element, index)=>{
           return (
-            <div className='items-carousel-card'>
+            <div className='items-carousel-card' key={index}>
               <div className='item-car-img-box'>
                 <img src={element.item_picture_url} alt={element.item_name} className='item-carousel-img'></img>
               </div>
@@ -67,7 +86,8 @@ export default function ItemsCarousel() {
                 </div>
                 <div className='item-price-cart-div'>
                   <p className='item-price-in-carousel'>₹{element.item_price}</p>
-                  <AddShoppingCart sx={{marginBottom:"-5px", color:"#ff9100", fontSize:"35px"}} className='add-cart-icon' />
+                  <AddShoppingCart sx={{marginBottom:"-5px", color:"#ff9100", fontSize:"35px"}} className='add-cart-icon' 
+                  onClick={()=>addItemToCart(element)}/>
                 </div>
               </div>
             </div>

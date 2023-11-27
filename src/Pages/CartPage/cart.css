@@ -1,0 +1,133 @@
+.cart-page-maincontainer{
+    width: 100%;
+    padding: 0px 20px 20px;
+    box-sizing: border-box;
+}
+.cart-container{
+    display: flex;
+    justify-content: space-between;
+}
+.cart-items-container{
+    width: 75%;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.cart-items-header{
+    display: flex;
+    justify-content: space-between;
+}
+.cart-items-container h2{
+    margin: 0px;
+}
+.cart-items-container hr{
+    border: 1px solid #ece5da;
+}
+.cart-items-table{
+    width: 100%;
+    margin: 25px auto;
+    padding: 0;
+    border-collapse: collapse;
+    background-color: #faf9f9;
+    text-align: left;
+    font-size: 14px;
+}
+.cart-items-table thead{
+    font-size: 16px;
+    color: #000;
+}
+.cart-items-table th, .cart-items-table td{
+    margin: 0;
+    border: 0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.cart-items-table td{
+    border-top: 1px solid #eee;
+}
+.cart-item-col{
+    display: flex;
+}
+.cart-item-img{
+    width: 180px;
+    height: 150px;
+    margin-right: 20px;
+}
+.cart-item-quan-div{
+    display: flex;
+    align-items: center;
+}
+.cart-quantity-btn{
+    border: 1px solid #ece5da;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.cart-item-remove-text{
+    color: #007185;
+    cursor: pointer;
+}
+.total-checkout-box{
+    text-align: right;
+    margin: 5px 0px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.total-price{
+    margin-left:20px;
+}
+.checkout-btn{
+    margin-left:15px;
+    cursor: pointer;
+}
+.edit-quan-modal{
+    background-color: #fff;
+    width: 30%;
+    height: auto;
+    padding: 10px 30px 30px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.507);
+}
+.edit-quan-modal p{
+    font-size: 14px;
+    margin: 10px 0px;
+}
+.edit-quan-input{
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #a5a3a3;
+}
+.edit-modal-btns{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto 0px;
+}
+.update-confirm-btn, .cancel-btn{
+    background-color: #ff9100;
+    border: none;
+    width: 80px;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.cancel-btn{
+    background: #eee;
+}
+.update-confirm-btn:hover{
+    background-color: #ff7b00;
+}
+.cancel-btn:hover{
+    border: 1px solid #ff9100;
+}

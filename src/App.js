@@ -16,6 +16,8 @@ import CustomerHomePage from './Pages/CustomerHomePage/CustomerHomePage';
 import CustomerLayout from './Components/CustomerLayout/CustomerLayout';
 import CustomerProtectedLayout from './Components/CustomerProtectedLayout/CustomerProtectedLayout';
 import CustomerProfile from './Pages/CustomerProfile/CustomerProfile';
+import CartPage from './Pages/CartPage/CartPage';
+import RestaurantsList from './Pages/RestaurantsList/RestaurantsList';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
           <Route path='/customer' element={<CustomerLayout/>}>
             <Route path='/customer/home' element={<CustomerHomePage/>}></Route>
             <Route path='/customer/profile' element={<CustomerProfile/>}></Route>
+            <Route path="/customer/cart" element={<CartPage/>}></Route>
+            <Route path="/customer/restaurantslist" element={<RestaurantsList/>}></Route>
           </Route>
         </Route>
         <Route path='/customer/login' element={<CustomerLogin/>}></Route>
