@@ -18,6 +18,7 @@ import CustomerProtectedLayout from './Components/CustomerProtectedLayout/Custom
 import CustomerProfile from './Pages/CustomerProfile/CustomerProfile';
 import CartPage from './Pages/CartPage/CartPage';
 import RestaurantsList from './Pages/RestaurantsList/RestaurantsList';
+import Orders from './Pages/Orders/Orders';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path='/restaurant/settings' element={<RestaurantSettings/>}></Route>
             <Route path='/restaurant/foodmenu' element={<RestaurantFoodMenu/>}></Route>
             <Route path='/restaurant/editfooditem' element={<EditFoodItem/>}></Route>
+            <Route path='/restaurant/orders' element={<Orders/>}></Route>
           </Route>
         </Route>
         <Route path='/customer' element={<CustomerProtectedLayout/>}>

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import "./cart.css";
 import axios from 'axios';
 import { Edit } from "@mui/icons-material";
-import { useNavigate } from 'react-router-dom';
 
 export default function CartPage() {
-  const navigate= useNavigate();
   const [cartItems, setCartItems] = useState();
   const [totalPrice, setTotalPrice] = useState("");
   const [showQuanEditModal, setShowQuanEditModal] = useState(false);
@@ -13,7 +11,6 @@ export default function CartPage() {
   const [quantityUpdatedItem, setQuantityUpdatedItem] = useState({});
   const [showRemoveModal, setShowRemoveModal] = useState(false);
   const [itemToRemoveFromCart, setItemToRemoveFromCart] =useState();
-  const [removeSucess, setRemoveSuccess] = useState("");
 
   const getCartItems = async ()=>{
     try{
@@ -32,25 +29,25 @@ export default function CartPage() {
   }
   const getTotalPrice=async()=>{
     try{
-      if(cartItems && cartItems.length>0){
         const result = await axios.post("http://localhost:8080/cart/get_totalprice",{}, {
         headers:{
           Authorization:localStorage.getItem("c-token")
         }
-      });
-      if(result.status===200){
-        setTotalPrice(result.status.data[0].total_price);
-      }
-      }
+        });
+        if(result.status===200){
+          setTotalPrice(result.data[0].total_price);
+        }
     }
     catch(e){
       console.log(e.response);
     }  
   }
   useEffect(()=>{
-    getCartItems();
-    getTotalPrice();
-  },[]);
+    if(localStorage.getItem("c-token")){
+      getCartItems();
+      getTotalPrice();
+    }
+  }, []);
   const displayQuanEditModal = (element)=>{
     setShowQuanEditModal(true);
     setQuantityUpdatedItem(element);
@@ -177,7 +174,7 @@ export default function CartPage() {
           <hr></hr>
           <div className='total-checkout-box'>
             Total Price:
-            {totalPrice.length===0?(<></>):(<span className='total-price'>₹{totalPrice}</span>)}
+            <span className='total-price'>₹{totalPrice}</span>
             <button className='checkout-btn' onClick={checkoutFromCart}>Checkout</button>
           </div>
           <div className={showQuanEditModal ? "edit-quan-modal" : "hide-data"}>
@@ -204,9 +201,6 @@ export default function CartPage() {
               <button className="cancel-btn" onClick={()=>setShowRemoveModal(false)}>Cancel</button>
               <button className="delete-confirm-btn" onClick={handleClickRemoveItemFromCart}>Remove</button>
             </div>
-            <p className={ removeSucess=== "" ? "hide-data": "form-submit-success-msg"}>
-                {removeSucess}
-            </p>
          </div>
         </div>
         </>):(<p>Your Cart is Empty!</p>)}

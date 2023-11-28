@@ -16,12 +16,15 @@ export default function RestaurantSideNav() {
   const gotoRestAddItem=()=>{
     navigate("/restaurant/addfooditem");
   }
+  const gotoRestOrders=()=>{
+    navigate("/restaurant/orders")
+  }
   const gotoRestSettings=()=>{
     navigate("/restaurant/settings");
   }
   const logOutFromRestPage=()=>{
     localStorage.removeItem("r-token");
-    navigate("/");
+    navigate("/restaurant/orders");
   }
   
   return (
@@ -39,7 +42,7 @@ export default function RestaurantSideNav() {
             <AddCard className='sidenav-list-icon'/>
             <span>Add Food Item</span>
           </li>
-          <li className='sidenav-list'>
+          <li  className={(pathname==="/restaurant/orders")?"sidenav-list sidenav-active-list":"sidenav-list"} onClick={gotoRestOrders}>
             <Grading  className='sidenav-list-icon'/>
             <span>Orders</span>
           </li>
