@@ -2,14 +2,16 @@ import { LinearProgress } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import "./restaurantslist.css";
+import ItemsCarousel from '../../Components/ItemsCarousel/ItemsCarousel';
 
 export default function RestaurantsList() {
   const [restaurantsList, setRestaurantsList] = useState();
+  const [exploreRestMenu, setExploreRestMenu] = useState(); 
+  const [displayRestFoodMenu, setDisplayRestFoodMenu] = useState(false);
 
   const getRestaurantsList=async()=>{
     try{
         const result = await axios.get("http://localhost:8080/restaurant/get_restaurantslist");
-        console.log(result);
         if(result.status===200){
             setRestaurantsList(result.data);
         }
@@ -21,28 +23,21 @@ export default function RestaurantsList() {
   useEffect(()=>{
     getRestaurantsList();
   },[]);
-  const checkRestFoodMenu=async(restaurant)=>{
-    const restaurantID = restaurant._id;
-    try{
-        const result = await axios.post("http://localhost:8080/restaurant_food/getfoodmenu", {restaurantID});
-        if(result.status===200){
-            console.log(result.data);
-        }
-    }
-    catch(e){
-        console.log(e);
-    }
+  const handleDisplayMenuClick=(restaurant)=>{
+    setDisplayRestFoodMenu(true);
+    setExploreRestMenu(restaurant);
   }
 
   return (
     <div className='restlist-page-container'>
         <h2>Restaurants List</h2>
-        <table className="restlist-table">
+        <table className="restlist-table"> 
             <thead>
             <tr>
                 <th>Restaurant Name</th>
                 <th>Address</th>
                 <th>OpeningTime - ClosingTime</th>
+                <th>Explore Food Menu</th>
             </tr>
             </thead>
             <tbody>
@@ -54,6 +49,9 @@ export default function RestaurantsList() {
                         <td>{row.restaurant_name}</td>
                         <td>{row.restaurant_address}</td>
                         <td>{row.restaurant_openingtime}{"-"}{row.restaurant_closingtime}</td>
+                        <td>
+                            <button className='table-action-btn' onClick={()=>handleDisplayMenuClick(row)}>Menu</button>
+                        </td>
                     </tr>
                 ))}
                 </>
@@ -76,6 +74,12 @@ export default function RestaurantsList() {
             </div>
             </>
         )}
+        {displayRestFoodMenu?(
+            <div>
+                <ItemsCarousel id={exploreRestMenu._id} heading={`${exploreRestMenu.restaurant_name}`+" Food Menu"}/>
+            </div>
+        ):(<></>)
+        }
     </div>
   )
 }

@@ -112,3 +112,9 @@
     font-size: 35px !important;
     color: #ff9100 !important;
 }
+.carousel-loader-div{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

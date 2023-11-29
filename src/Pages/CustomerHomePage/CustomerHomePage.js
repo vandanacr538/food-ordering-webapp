@@ -49,7 +49,7 @@ export default function CustomerHomePage() {
         </div>
       </div>
       <div id='food-list'>
-        <ItemsCarousel/>
+        <ItemsCarousel heading={"Food items full list"}/>
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
 .restlist-page-container{
     width: 100%;
-    height: 100vh;
+    height: auto;
     background-color: #fff;
-    padding:35px 50px 60px;
+    padding: 0px 50px 60px;
     box-sizing: border-box;
 }
 .restlist-maincontainer h2{
