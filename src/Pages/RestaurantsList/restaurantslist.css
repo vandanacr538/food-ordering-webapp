@@ -1,6 +1,6 @@
 .restlist-page-container{
     width: 100%;
-    height: auto;
+    min-height: 100vh;
     background-color: #fff;
     padding: 0px 50px 60px;
     box-sizing: border-box;

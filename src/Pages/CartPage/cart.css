@@ -2,6 +2,7 @@
     width: 100%;
     padding: 0px 20px 20px;
     box-sizing: border-box;
+    min-height: 100vh;
 }
 .cart-container{
     display: flex;
@@ -13,6 +14,7 @@
     border-radius: 3px;
     padding: 20px;
     box-sizing: border-box;
+    margin: auto;
 }
 .cart-items-header{
     display: flex;
@@ -34,7 +36,7 @@
     font-size: 14px;
 }
 .cart-items-table thead{
-    font-size: 16px;
+    font-size: 17px;
     color: #000;
 }
 .cart-items-table th, .cart-items-table td{
@@ -54,6 +56,14 @@
     height: 150px;
     margin-right: 20px;
 }
+.cart-item-detail-div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.cart-item-detail-div h3{
+    font-size: 17px;
+}
 .cart-item-quan-div{
     display: flex;
     align-items: center;
@@ -69,21 +79,36 @@
     margin-right: 10px;
 }
 .cart-item-remove-text{
+    font-size: 13px;
     color: #007185;
     cursor: pointer;
 }
+.cart-item-remove-text:hover{
+    text-decoration: underline;
+}
 .total-checkout-box{
-    text-align: right;
     margin: 5px 0px;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .total-price{
     margin-left:20px;
+    font-size: 19px;
 }
 .checkout-btn{
     margin-left:15px;
+    width: 90px;
+    height: 30px;
+    border: none;
+    background-color: #ff9100;
+    border-radius: 5px;
     cursor: pointer;
+}
+.checkout-btn:hover{
+    background-color: #ff7b00;
 }
 .edit-quan-modal{
     background-color: #fff;
@@ -114,7 +139,7 @@
     justify-content: space-between;
     margin: 10px auto 0px;
 }
-.update-confirm-btn, .cancel-btn{
+.update-confirm-btn, .cancel-btn, .order-confirm-btn, .empty-cart-btn{
     background-color: #ff9100;
     border: none;
     width: 80px;
@@ -125,9 +150,37 @@
 .cancel-btn{
     background: #eee;
 }
-.update-confirm-btn:hover{
+.update-confirm-btn:hover, .order-confirm-btn:hover, .empty-cart-btn:hover{
     background-color: #ff7b00;
 }
 .cancel-btn:hover{
     border: 1px solid #ff9100;
+}
+.checkout-modal-ul li{
+    text-align: left;
+}
+.cart-page-loader{
+    height: 100%;
+    width: 100%;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+}
+.empty-cart-div{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #a5a3a3;
+    margin: 100px auto;
+}
+.empty-cart-div h3{
+    font-size: 25px;
+    margin: 20px auto;
+}
+.empty-cart-div p{
+    margin: 20px auto;
+}
+.empty-cart-btn{
+    width: 150px;
+    height: 40px;
 }

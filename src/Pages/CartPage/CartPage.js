@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import "./cart.css";
 import axios from 'axios';
 import { Edit } from "@mui/icons-material";
+import { useNavigate } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 
 export default function CartPage() {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState();
   const [totalPrice, setTotalPrice] = useState("");
   const [showQuanEditModal, setShowQuanEditModal] = useState(false);
@@ -11,6 +14,7 @@ export default function CartPage() {
   const [quantityUpdatedItem, setQuantityUpdatedItem] = useState({});
   const [showRemoveModal, setShowRemoveModal] = useState(false);
   const [itemToRemoveFromCart, setItemToRemoveFromCart] =useState();
+  const [showOrderConfirm, setShowOrderConfirm] = useState(false);
 
   const getCartItems = async ()=>{
     try{
@@ -107,6 +111,21 @@ export default function CartPage() {
       alert(e.response.data.msg);
     }
   }
+  const displayOrderConfirmModal=()=>{
+    setShowOrderConfirm(true);
+  }
+  const navigateToFoodList=()=>{
+    navigate("/customer/home");
+    setTimeout(() => {
+      const foodListSection = document.querySelector("#food-list");
+      if (foodListSection) {
+        foodListSection.scrollIntoView({ 
+          top: document.documentElement.scrollHeight - document.documentElement.clientHeight,
+          behavior: "smooth",
+        });
+      }
+    }, 100)
+  }
   const checkoutFromCart=async()=>{
     try{
       const result = await axios.post("http://localhost:8080/cart/checkout", {},
@@ -134,7 +153,7 @@ export default function CartPage() {
           <div className="cart-items-container">
           <div className='cart-items-header'>
             <h2>Your Cart</h2>
-            <h2>{cartItems.length} Items</h2>
+            <h2>Items : {cartItems.length}</h2>
           </div>
           <hr></hr>
           <table className='cart-items-table'>
@@ -151,7 +170,7 @@ export default function CartPage() {
                 <tr key={index}>
                   <td className='cart-item-col'>
                     <img src={element.fim.item_picture_url} alt={element.fim.item_name} className="cart-item-img"></img>
-                    <div>
+                    <div className='cart-item-detail-div'>
                       <h3>{element.fim.item_name}</h3>
                       <p className="cart-item-remove-text" onClick={()=>displayRemoveItemModal(element)}>Remove</p>
                     </div>
@@ -175,7 +194,7 @@ export default function CartPage() {
           <div className='total-checkout-box'>
             Total Price:
             <span className='total-price'>₹{totalPrice}</span>
-            <button className='checkout-btn' onClick={checkoutFromCart}>Checkout</button>
+            <button className='checkout-btn' onClick={displayOrderConfirmModal}>Checkout</button>
           </div>
           <div className={showQuanEditModal ? "edit-quan-modal" : "hide-data"}>
             <p>Enter the Quantity of </p>{" "}
@@ -201,11 +220,37 @@ export default function CartPage() {
               <button className="cancel-btn" onClick={()=>setShowRemoveModal(false)}>Cancel</button>
               <button className="delete-confirm-btn" onClick={handleClickRemoveItemFromCart}>Remove</button>
             </div>
-         </div>
+          </div>
+          <div className={showOrderConfirm? "delete-modal":"hide-data"}>
+            <h3>Confirm and Place an Order?</h3>
+            <p>You are about checkout & placing order for following items:</p>
+            <ul className='checkout-modal-ul'>
+              {cartItems && (cartItems.map((element)=>{
+                return (<li>{element.fim.item_name}</li>)
+              }))}
+            </ul>
+            <hr></hr>
+            <div className="delete-modal-btns">
+              <button className="cancel-btn" onClick={()=>setShowOrderConfirm(false)}>Cancel</button>
+              <button className="order-confirm-btn" onClick={checkoutFromCart}>Order</button>
+            </div>
+          </div>
         </div>
-        </>):(<p>Your Cart is Empty!</p>)}
         </>):(
-          <>Loading.....</>
+          <>
+          <div className='empty-cart-div'>
+            <h3>Your cart is Empty!</h3>
+            <p>Explore delicious & tasty food to add items to your cart & place an order</p>
+            <button className='empty-cart-btn' onClick={navigateToFoodList}>Explore Food Menu</button>
+          </div>
+          </>
+        )}
+        </>):(
+          <>
+          <div className='cart-page-loader'>
+           <CircularProgress style={{color:"#ff9100", width:"60px", height:"60px"}}/>
+          </div>
+          </>
         )}
       </div>
     </div>
