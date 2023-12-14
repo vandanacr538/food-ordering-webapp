@@ -10,7 +10,7 @@ export default function RestaurantHeader() {
   const [restaurantData, setRestaurantData] = useState({});
 
   const getRestDetails = async()=>{
-    const result =await axios.get("http://localhost:8080/restaurant/get_restaurant_details",{
+    const result =await axios.get("https://food-ordering-webapp-backend.onrender.com/restaurant/get_restaurant_details",{
       headers:{
         Authorization:localStorage.getItem("r-token")
       }

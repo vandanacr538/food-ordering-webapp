@@ -2,11 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import "./itemscarousel.css";
 import { AddShoppingCart, KeyboardArrowDown, KeyboardArrowUp, NavigateBefore, NavigateNext } from '@mui/icons-material';
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 
 export default function ItemsCarousel(props) {
-  const pathname = useLocation();
   const navigate = useNavigate();
   const itemCarouselElement = useRef();
   const [foodList, setFoodList] = useState();
@@ -31,7 +30,7 @@ export default function ItemsCarousel(props) {
     try{
       if(window.location.pathname==="/customer/restaurantslist"){
         setFoodList();
-        const result = await axios.post("http://localhost:8080/restaurant_food//getrest_foodmenu", {}, {
+        const result = await axios.post("https://food-ordering-webapp-backend.onrender.com/restaurant_food/getrest_foodmenu", {}, {
           headers:{
             Authorization: props.id
           }
@@ -41,7 +40,7 @@ export default function ItemsCarousel(props) {
         }
       }
       else{
-        const result = await axios.get("http://localhost:8080/restaurant_food/get_full_food_itemslist");
+        const result = await axios.get("https://food-ordering-webapp-backend.onrender.com/restaurant_food/get_full_food_itemslist");
         if(result.status===200){
           setFoodList(result.data);
         }
@@ -60,7 +59,7 @@ export default function ItemsCarousel(props) {
   const addItemToCart=async(item)=>{
     const itemToAddToCart = {item:item, quantity:1}
     try{
-      const result = await axios.post("http://localhost:8080/cart/add_to_cart", itemToAddToCart, 
+      const result = await axios.post("https://food-ordering-webapp-backend.onrender.com/cart/add_to_cart", itemToAddToCart, 
       {
         headers:{
           Authorization:localStorage.getItem("c-token")

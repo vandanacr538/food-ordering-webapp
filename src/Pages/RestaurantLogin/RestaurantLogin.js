@@ -89,7 +89,7 @@ export default function RestaurantLogin() {
     if (Object.values(restLoginValidDataObj).every(Boolean)) {
       try {
         const result = await axios.post(
-          "http://localhost:8080/restaurant/login",
+          "https://food-ordering-webapp-backend.onrender.com/restaurant/login",
           restaurantLoginData
         );
         if (result.status === 200) {

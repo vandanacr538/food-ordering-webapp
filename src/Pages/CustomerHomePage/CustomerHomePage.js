@@ -10,7 +10,7 @@ export default function CustomerHomePage() {
   
   const getCustomerDetails =async()=>{
     try{
-      const result = await axios.get("http://localhost:8080/customer/get_customer_details", {
+      const result = await axios.get("https://food-ordering-webapp-backend.onrender.com/customer/get_customer_details", {
         headers:{
           Authorization:localStorage.getItem("c-token")
         }

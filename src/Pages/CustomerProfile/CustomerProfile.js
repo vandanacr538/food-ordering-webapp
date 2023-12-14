@@ -26,7 +26,7 @@ export default function CustomerProfile() {
   };
 
   const getCustDetails = async()=>{
-    const result =await axios.get("http://localhost:8080/customer/get_customer_details",{
+    const result =await axios.get("https://food-ordering-webapp-backend.onrender.com/customer/get_customer_details",{
       headers:{
         Authorization:localStorage.getItem("c-token")
       }
@@ -190,7 +190,7 @@ export default function CustomerProfile() {
     if(Object.values(editCustProfileValidDataObj).every(Boolean)){
         console.log(custDetails);
         try {
-            const result = await axios.put("http://localhost:8080/customer/edit_customer_details", custDetails, {
+            const result = await axios.put("https://food-ordering-webapp-backend.onrender.com/customer/edit_customer_details", custDetails, {
                 headers:{
                   Authorization:localStorage.getItem("c-token")
                 }

@@ -6,7 +6,7 @@ export default function Orders() {
   const [ordersList, setOrdersList] = useState();
 
   const getOrders=async()=>{
-    const result = await axios.post("http://localhost:8080/order/getorders", {}, {
+    const result = await axios.post("https://food-ordering-webapp-backend.onrender.com/order/getorders", {}, {
       headers:{
         Authorization:localStorage.getItem("r-token")
       }
@@ -23,7 +23,7 @@ export default function Orders() {
   const completeOrder=async(order)=>{
     order.order_status=false;
     try{
-      const result = await axios.put("http://localhost:8080/order/update_orderstatus", order);
+      const result = await axios.put("https://food-ordering-webapp-backend.onrender.com/order/update_orderstatus", order);
       if(result.status===200){
         setTimeout(()=>{
           getOrders();

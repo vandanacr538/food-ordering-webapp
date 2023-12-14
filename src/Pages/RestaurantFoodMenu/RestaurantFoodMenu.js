@@ -17,7 +17,7 @@ export default function RestaurantFoodMenu() {
   
   const getFoodItems = async ()=>{
     try{
-      const result = await axios.post("http://localhost:8080/restaurant_food/get_rest_fooditemslist", {}, {
+      const result = await axios.post("https://food-ordering-webapp-backend.onrender.com/restaurant_food/get_rest_fooditemslist", {}, {
         headers:{
             Authorization:localStorage.getItem("r-token")
         }
@@ -49,7 +49,7 @@ export default function RestaurantFoodMenu() {
   const handleClickDeleteFoodItem=async()=>{
     console.log(itemToDelete);
     try{
-      const response = await axios.delete("http://localhost:8080/restaurant_food/delete_food_item", {data:itemToDelete});
+      const response = await axios.delete("https://food-ordering-webapp-backend.onrender.com/restaurant_food/delete_food_item", {data:itemToDelete});
       if(response.status===200){
         setDeleteSuccess(response.data.msg);
         setTimeout(()=>{

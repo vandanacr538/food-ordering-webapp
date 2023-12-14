@@ -1,6 +1,6 @@
 import { LinearProgress } from '@mui/material';
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./restaurantslist.css";
 import ItemsCarousel from '../../Components/ItemsCarousel/ItemsCarousel';
 
@@ -11,7 +11,7 @@ export default function RestaurantsList() {
 
   const getRestaurantsList=async()=>{
     try{
-        const result = await axios.get("http://localhost:8080/restaurant/get_restaurantslist");
+        const result = await axios.get("https://food-ordering-webapp-backend.onrender.com/restaurant/get_restaurantslist");
         if(result.status===200){
             setRestaurantsList(result.data);
         }

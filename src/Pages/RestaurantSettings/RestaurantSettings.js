@@ -28,7 +28,7 @@ export default function RestaurantSettings() {
   };
   
   const getRestDetails = async()=>{
-    const result =await axios.get("http://localhost:8080/restaurant/get_restaurant_details",{
+    const result =await axios.get("https://food-ordering-webapp-backend.onrender.com/restaurant/get_restaurant_details",{
       headers:{
         Authorization:localStorage.getItem("r-token")
       }
@@ -204,7 +204,7 @@ export default function RestaurantSettings() {
     if(Object.values(editRestSettingValidDataObj).every(Boolean)){
         console.log(restDetails);
         try {
-            const result = await axios.put("http://localhost:8080/restaurant/edit_restaurant_details", restDetails, {
+            const result = await axios.put("https://food-ordering-webapp-backend.onrender.com/restaurant/edit_restaurant_details", restDetails, {
                 headers:{
                   Authorization:localStorage.getItem("r-token")
                 }

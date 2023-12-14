@@ -222,7 +222,7 @@ export default function CustomerSignUp() {
       console.log(custSignUpValidDataObj);
       try {
         const result = await axios.post(
-          "http://localhost:8080/customer/signup",
+          "https://food-ordering-webapp-backend.onrender.com/customer/signup",
           customerSignUpData
         );
         if (result.status === 200) {

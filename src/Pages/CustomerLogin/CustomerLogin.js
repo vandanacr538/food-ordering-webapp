@@ -90,7 +90,7 @@ export default function CustomerLogin() {
     ) {
       try {
         const result = await axios.post(
-          "http://localhost:8080/customer/login",
+          "https://food-ordering-webapp-backend.onrender.com/customer/login",
           customerLoginData
         );
         if(result.status===200){

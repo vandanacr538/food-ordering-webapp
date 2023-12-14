@@ -230,7 +230,7 @@ export default function RestaurantSignUp() {
     if (Object.values(restSignUpValidDataObj).every(Boolean)) {
       try {
         const result = await axios.post(
-          "http://localhost:8080/restaurant/signup",
+          "https://food-ordering-webapp-backend.onrender.com/restaurant/signup",
           restSignUpData
         );
         if (result.status === 200) {

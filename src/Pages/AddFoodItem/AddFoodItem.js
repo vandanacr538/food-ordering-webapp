@@ -149,7 +149,7 @@ export default function AddFoodItem() {
       }
       try{
         const response = await axios.post(
-          "http://localhost:8080/restaurant_food/add_food_item",
+          "https://food-ordering-webapp-backend.onrender.com/restaurant_food/add_food_item",
           formData,
           config,
         );

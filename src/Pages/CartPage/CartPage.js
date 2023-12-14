@@ -18,7 +18,7 @@ export default function CartPage() {
 
   const getCartItems = async ()=>{
     try{
-      const result = await axios.post("http://localhost:8080/cart/getcart", {}, {
+      const result = await axios.post("https://food-ordering-webapp-backend.onrender.com/cart/getcart", {}, {
         headers:{
           Authorization:localStorage.getItem("c-token")
         }
@@ -33,7 +33,7 @@ export default function CartPage() {
   }
   const getTotalPrice=async()=>{
     try{
-        const result = await axios.post("http://localhost:8080/cart/get_totalprice",{}, {
+        const result = await axios.post("https://food-ordering-webapp-backend.onrender.com/cart/get_totalprice",{}, {
         headers:{
           Authorization:localStorage.getItem("c-token")
         }
@@ -68,7 +68,7 @@ export default function CartPage() {
   const updateQuantity=async()=>{
     console.log(quantityUpdatedItem);
     try{
-      const result = await axios.put("http://localhost:8080/cart/update_item_quantity", quantityUpdatedItem, 
+      const result = await axios.put("https://food-ordering-webapp-backend.onrender.com/cart/update_item_quantity", quantityUpdatedItem, 
       {
         headers:{
           Authorization:localStorage.getItem("c-token")
@@ -93,7 +93,7 @@ export default function CartPage() {
   const handleClickRemoveItemFromCart=async()=>{
     console.log(itemToRemoveFromCart);
     try{
-      const response = await axios.delete("http://localhost:8080/cart/remove_item_from_cart", 
+      const response = await axios.delete("https://food-ordering-webapp-backend.onrender.com/cart/remove_item_from_cart", 
       {
         headers:{
           Authorization:localStorage.getItem("c-token")
@@ -128,7 +128,7 @@ export default function CartPage() {
   }
   const checkoutFromCart=async()=>{
     try{
-      const result = await axios.post("http://localhost:8080/cart/checkout", {},
+      const result = await axios.post("https://food-ordering-webapp-backend.onrender.com/cart/checkout", {},
       {
         headers:{
           Authorization:localStorage.getItem("c-token")
